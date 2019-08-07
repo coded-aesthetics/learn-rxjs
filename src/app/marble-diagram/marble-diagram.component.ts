@@ -21,6 +21,10 @@ export class MarbleDiagramComponent implements OnInit {
 
   lastTime: number = Date.now();
 
+  isStopped = false;
+
+  completedXPos: number | undefined = undefined;
+
   constructor() { }
 
   ngOnInit() {
@@ -29,12 +33,27 @@ export class MarbleDiagramComponent implements OnInit {
     pipe(map(x => Date.now() - this.lastTime), tap(() => this.lastTime = Date.now()))(this.moveservable).subscribe(this.redraw.bind(this));
   }
 
+  setObservable(obs: Observable<any>, stopOnComplete = false) {
+    obs.subscribe(x => this.addMarble(x), console.error, stopOnComplete ? () => {this.complete(); this.stop(); } : this.complete.bind(this));
+  }
+
   addMarble(msg: any) {
-    this.marbles.push({text: msg, xPos: 600});
+    this.marbles.push({text: msg, xPos: 600 - 20});
+  }
+
+  stop() {
+    this.isStopped = true;
+  }
+
+  complete() {
+    this.completedXPos = 600 - 20;
   }
 
   redraw(offsetXDelta: number) {
-    this.marbles = this.marbles.filter(x => x.xPos > -20).map(x => ({text: x.text, xPos: x.xPos - offsetXDelta / 8}));
+    this.marbles = this.isStopped ?
+      this.marbles : this.marbles.filter(x => x.xPos > -20).map(x => ({text: x.text, xPos: x.xPos - offsetXDelta / 8}));
+    this.completedXPos = this.isStopped ?
+      this.completedXPos : this.completedXPos - offsetXDelta / 8;
     this.ctx.clearRect(0, 0, this.ctx.canvas.width + 20, this.ctx.canvas.height + 20);
     this.ctx.fillStyle = 'blue';
     this.ctx.strokeStyle = 'blue';
@@ -42,18 +61,23 @@ export class MarbleDiagramComponent implements OnInit {
     this.ctx.moveTo(0, 35);
     this.ctx.lineTo(600, 35);
     this.ctx.stroke();
+    if (this.completedXPos !== undefined) {
+      this.ctx.beginPath();       // Start a new path
+      this.ctx.moveTo(this.completedXPos, 5);
+      this.ctx.lineTo(this.completedXPos, 65);
+      this.ctx.stroke();
+    }
     this.marbles.forEach(x => {
       this.ctx.fillStyle = 'white';
       this.ctx.strokeStyle = 'blue';
       this.ctx.beginPath();       // Start a new path
-      this.ctx.arc(x.xPos, 35, 20, 0, 2 * Math.PI);
+      this.ctx.arc(x.xPos, 35, 23, 0, 2 * Math.PI);
       this.ctx.fill();
       this.ctx.stroke();
       this.ctx.font = '16px serif';
       const dim = this.ctx.measureText(x.text);
       this.ctx.fillStyle = 'blue';
       this.ctx.fillText(x.text, x.xPos - dim.width / 2, 35 + 5);
-      this.lastTime
     });
   }
 }

@@ -1,0 +1,30 @@
+<div id="combine-all-outer">
+  <h1>
+    switch to a different interval observable on click, but only if current
+    observable has completed
+  </h1>
+  <div id="combine-all">
+    <div class="caption">
+      <h3>observable started after first mouseclick</h3>
+    </div>
+    <app-marble-diagram #marble></app-marble-diagram>
+    <div class="caption">
+      <h3>observable started after second mouseclick</h3>
+    </div>
+    <app-marble-diagram #marble2></app-marble-diagram>
+    <div class="caption">
+      <h3>observable started after third mouseclick</h3>
+    </div>
+    <app-marble-diagram #marble3></app-marble-diagram>
+    <div class="caption">
+      <h3>observable started after fourth mouseclick</h3>
+    </div>
+    <app-marble-diagram #marble4></app-marble-diagram>
+    <div style="width:100%"><h3>As soon as the last observable is started, combineAll starts to replay all observables in such a way, that they begin at the same time. It then merges the output into one observable</h3></div>
+    <app-marble-diagram #marble5></app-marble-diagram>
+    <app-marble-diagram #marble6></app-marble-diagram>
+    <app-marble-diagram #marble7></app-marble-diagram>
+    <app-marble-diagram #marble8></app-marble-diagram>
+    <app-marble-diagram #marble9></app-marble-diagram>
+  </div>
+</div>
