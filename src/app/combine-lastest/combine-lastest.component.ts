@@ -25,11 +25,11 @@ export class CombineLastestComponent implements OnInit {
 
   ngOnInit() {
     const startTime = Date.now();
-    const obs3 = pipe(map(x => x.toString(36)))(
+    const obs3 = pipe(map(x => (x as number).toString(36)))(
       interval(456)
     );
     obs3.subscribe(x => this.marble2.addMarble(x));
-    const obs4 = pipe(map(x => x.toString(36)))(interval(1100));
+    const obs4 = pipe(map(x => (x as number).toString(36)))(interval(1100));
     obs4.subscribe(x => this.marble.addMarble(x));
     this.observable = pipe(tap(x => this.marble3.addMarble(x)))(combineLatest(obs3, obs4));
   }

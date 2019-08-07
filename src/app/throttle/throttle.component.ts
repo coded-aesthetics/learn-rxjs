@@ -22,7 +22,7 @@ export class ThrottleComponent implements OnInit {
 
   ngOnInit() {
     const startTime = Date.now();
-    const obs3 = pipe(map(x => x.toString(36)))(
+    const obs3 = pipe(map(x => (x as number).toString(36)))(
       interval(333)
     );
     obs3.subscribe(x => this.marble2.addMarble(x));

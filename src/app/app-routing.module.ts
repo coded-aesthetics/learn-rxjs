@@ -18,6 +18,7 @@ import { FromEventComponent } from './from-event/from-event.component';
 import { ForkJoinComponent } from './fork-join/fork-join.component';
 import { ExhaustMapComponent } from './exhaust-map/exhaust-map.component';
 import { CombineAllComponent } from './combine-all/combine-all.component';
+import { MergeMapComponent } from './merge-map/merge-map.component';
 
 const routes: Routes = [
   { path: 'switchMap', component: SwitchMapComponent },
@@ -37,6 +38,7 @@ const routes: Routes = [
   { path: 'forkJoin', component: ForkJoinComponent },
   { path: 'combineAll', component: CombineAllComponent },
   { path: 'exhaustMap', component: ExhaustMapComponent },
+  { path: 'mergeMap', component: MergeMapComponent },
   { path: 'filter', component: FilterComponent }
 ];
 

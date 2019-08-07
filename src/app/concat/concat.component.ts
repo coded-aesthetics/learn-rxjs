@@ -25,13 +25,13 @@ export class ConcatComponent implements OnInit {
 
   ngOnInit() {
     const startTime = Date.now();
-    const obs3 = pipe(take(7), map(x => x.toString(36)))(
+    const obs3 = pipe(take(7), map(x => (x as number).toString(36)))(
       interval(333)
     );
     obs3.subscribe(x => this.marble2.addMarble(x), console.error, () => {
       this.marble2.complete();
     });
-    const obs4 = pipe(take(7), map(x => (x + 10).toString(36)))(interval(330));
+    const obs4 = pipe(take(7), map(x => ((x as number) + 10).toString(36)))(interval(330));
     obs4.subscribe(x => this.marble.addMarble(x), console.error, () => {
       this.marble.complete();
     });

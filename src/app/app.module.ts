@@ -23,6 +23,7 @@ import { FromEventComponent } from './from-event/from-event.component';
 import { ForkJoinComponent } from './fork-join/fork-join.component';
 import { ExhaustMapComponent } from './exhaust-map/exhaust-map.component';
 import { CombineAllComponent } from './combine-all/combine-all.component';
+import { MergeMapComponent } from './merge-map/merge-map.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { CombineAllComponent } from './combine-all/combine-all.component';
     FromEventComponent,
     ForkJoinComponent,
     ExhaustMapComponent,
-    CombineAllComponent
+    CombineAllComponent,
+    MergeMapComponent
   ],
   imports: [
     BrowserModule,

@@ -22,7 +22,7 @@ export class BufferTimeComponent implements OnInit {
 
   ngOnInit() {
     const startTime = Date.now();
-    const obs3 = pipe(filter(() => Math.random() < 0.1), map(x => x.toString(36)))(
+    const obs3 = pipe(filter(() => Math.random() < 0.1), map(x => (x as number).toString(36)))(
       interval(100)
     );
     const sharedExample = obs3.pipe(share());

@@ -24,6 +24,6 @@ export class FromEventComponent implements OnInit {
     const obs3 =
       fromEvent(document, 'click')
     ;
-    pipe(map(x => x.clientY), tap(x => this.marble.addMarble(x)))(obs3).subscribe(x => x);
+    pipe(map(x => (x as any).clientY), tap(x => this.marble.addMarble(x)))(obs3).subscribe(x => x);
   }
 }

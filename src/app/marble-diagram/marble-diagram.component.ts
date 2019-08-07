@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { Observable, pipe } from 'rxjs';
 import { timer } from 'rxjs/observable/timer';
 import { map, tap } from 'rxjs/operators';
@@ -10,6 +10,8 @@ import { interval } from 'rxjs/observable/interval';
   styleUrls: ['./marble-diagram.component.css']
 })
 export class MarbleDiagramComponent implements OnInit {
+  @Input() observable: Observable<any>;
+
   @ViewChild('canvas')
   canvas: any;
 
@@ -28,6 +30,9 @@ export class MarbleDiagramComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    if (this.observable) {
+      this.setObservable(this.observable);
+    }
     this.moveservable = interval(1);
     this.ctx = this.canvas.nativeElement.getContext('2d');
     pipe(map(x => Date.now() - this.lastTime), tap(() => this.lastTime = Date.now()))(this.moveservable).subscribe(this.redraw.bind(this));
