@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
-import { Observable, pipe } from 'rxjs';
+import { Component, OnInit, ViewChild, ElementRef, Input, OnDestroy } from '@angular/core';
+import { Observable, pipe, Subscription } from 'rxjs';
 import { timer } from 'rxjs/observable/timer';
 import { map, tap } from 'rxjs/operators';
 import { interval } from 'rxjs/observable/interval';
@@ -9,7 +9,7 @@ import { interval } from 'rxjs/observable/interval';
   templateUrl: './marble-diagram.component.html',
   styleUrls: ['./marble-diagram.component.css']
 })
-export class MarbleDiagramComponent implements OnInit {
+export class MarbleDiagramComponent implements OnInit, OnDestroy {
   @Input() observable: Observable<any>;
 
   @ViewChild('canvas')
@@ -28,6 +28,8 @@ export class MarbleDiagramComponent implements OnInit {
   completedXPos: number | undefined = undefined;
   startedXPos: number | undefined = undefined;
 
+  sub: Subscription;
+
   constructor() { }
 
   ngOnInit() {
@@ -39,9 +41,18 @@ export class MarbleDiagramComponent implements OnInit {
     pipe(map(x => Date.now() - this.lastTime), tap(() => this.lastTime = Date.now()))(this.moveservable).subscribe(this.redraw.bind(this));
   }
 
+  ngOnDestroy(): void {
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
+  }
+
   setObservable(obs: Observable<any>, stopOnComplete = false) {
     this.startedXPos = 600 - 20;
-    obs.subscribe(x => this.addMarble(x), console.error, stopOnComplete ? () => {this.complete(); this.stop(); } : this.complete.bind(this));
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
+    this.sub = obs.subscribe(x => this.addMarble(x), console.error, stopOnComplete ? () => {this.complete(); this.stop(); } : this.complete.bind(this));
   }
 
   addMarble(msg: any) {

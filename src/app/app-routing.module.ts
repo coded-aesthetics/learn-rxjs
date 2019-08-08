@@ -22,6 +22,8 @@ import { MergeMapComponent } from './merge-map/merge-map.component';
 import { HotVsColdComponent } from './hot-vs-cold/hot-vs-cold.component';
 import { ConcatMapComponent } from './concat-map/concat-map.component';
 import { DelayWhenComponent } from './delay-when/delay-when.component';
+import { ElementAtComponent } from './element-at/element-at.component';
+import { DistinctComponent } from './distinct/distinct.component';
 
 const routes: Routes = [
   { path: 'switchMap', component: SwitchMapComponent },
@@ -33,8 +35,10 @@ const routes: Routes = [
   { path: 'map', component: MapComponent },
   { path: 'scan', component: ScanComponent },
   { path: 'reduce', component: ReduceComponent },
+  { path: 'elementAt', component: ElementAtComponent },
   { path: 'combineLatest', component: CombineLastestComponent },
   { path: 'distinctUntilChanged', component: DistinctUntilChangedComponent },
+  { path: 'distinct', component: DistinctComponent },
   { path: 'concat', component: ConcatComponent },
   { path: 'pairs', component: PairsComponent },
   { path: 'fromEvent', component: FromEventComponent },

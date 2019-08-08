@@ -23,9 +23,8 @@ export class DebounceComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    const startTime = Date.now();
     const click$ = fromEvent(document, 'click');
-    const clickCount$ = click$.pipe(scan((acc, val) => acc + 1, 0))
+    const clickCount$ = click$.pipe(scan((acc) => acc + 1, 0));
     const obs3 = pipe(map(x => (x[1] as number)))(
       fromEvent(document, 'click').pipe(withLatestFrom(clickCount$))
     );

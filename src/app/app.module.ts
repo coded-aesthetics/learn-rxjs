@@ -27,6 +27,8 @@ import { MergeMapComponent } from './merge-map/merge-map.component';
 import { HotVsColdComponent } from './hot-vs-cold/hot-vs-cold.component';
 import { ConcatMapComponent } from './concat-map/concat-map.component';
 import { DelayWhenComponent } from './delay-when/delay-when.component';
+import { ElementAtComponent } from './element-at/element-at.component';
+import { DistinctComponent } from './distinct/distinct.component';
 
 
 @NgModule({
@@ -54,7 +56,9 @@ import { DelayWhenComponent } from './delay-when/delay-when.component';
     MergeMapComponent,
     HotVsColdComponent,
     ConcatMapComponent,
-    DelayWhenComponent
+    DelayWhenComponent,
+    ElementAtComponent,
+    DistinctComponent
   ],
   imports: [
     BrowserModule,
