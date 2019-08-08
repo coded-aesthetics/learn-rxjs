@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { pipe } from 'rxjs/util/pipe';
-import { map, tap } from 'rxjs/operators';
+import { map, tap, take } from 'rxjs/operators';
 import { interval } from 'rxjs/observable/interval';
 import { zip } from 'rxjs/observable/zip';
 import { Observable } from 'rxjs/Observable';
@@ -24,13 +24,14 @@ export class ZipComponent implements OnInit {
 
   ngOnInit() {
     const startTime = Date.now();
-    const obs3 = pipe(map(x => (x as number).toString(36)))(
-      interval(333)
+    const obs3 = pipe(take(10), map(x => (x as number).toString(36)))(
+      interval(678)
     );
-    obs3.subscribe(x => this.marble2.addMarble(x));
+    this.marble2.setObservable(obs3, true);
     const obs4 = pipe(map(x => (x as number).toString(36)))(interval(1100));
-    obs4.subscribe(x => this.marble.addMarble(x));
-    this.observable = pipe(tap(x => this.marble3.addMarble(x)))(zip(obs3, obs4));
+    this.marble.setObservable(obs4);
+    this.observable = zip(obs3, obs4);
+    this.marble3.setObservable(this.observable);
   }
 
 }

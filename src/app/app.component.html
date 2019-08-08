@@ -1,25 +1,30 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div id="main">
   <nav id="navigation">
-    <div><a routerLink="/switchMap">switchMap</a></div>
     <div><a routerLink="/throttle">throttle</a></div>
     <div><a routerLink="/debounce">debounce</a></div>
+    <div><a routerLink="/bufferTime">bufferTime</a></div>
     <div><a routerLink="/zip">zip</a></div>
     <div><a routerLink="/merge">merge</a></div>
-    <div><a routerLink="/bufferTime">bufferTime</a></div>
-    <div><a routerLink="/filter">filter</a></div>
+    <div><a routerLink="/concat">concat</a></div>
     <div><a routerLink="/map">map</a></div>
+    <div><a routerLink="/filter">filter</a></div>
     <div><a routerLink="/scan">scan</a></div>
     <div><a routerLink="/reduce">reduce</a></div>
+    <div><a routerLink="/delayWhen">delayWhen</a></div>
     <div><a routerLink="/distinctUntilChanged">distinctUntilChanged</a></div>
-    <div><a routerLink="/concat">concat</a></div>
     <div><a routerLink="/pairs">pairs</a></div>
     <div><a routerLink="/fromEvent">fromEvent</a></div>
     <div><a routerLink="/forkJoin">forkJoin</a></div>
-    <div><a routerLink="/exhaustMap">exhaustMap</a></div>
     <div><a routerLink="/combineAll">combineAll</a></div>
-    <div><a routerLink="/mergeMap">mergeMap</a></div>
     <div><a routerLink="/combineLatest">combineLatest</a></div>
+    <div class="nav-category">
+      <div><a routerLink="/switchMap">switchMap</a></div>
+      <div><a routerLink="/exhaustMap">exhaustMap</a></div>
+      <div><a routerLink="/mergeMap">mergeMap</a></div>
+      <div><a routerLink="/concatMap">concatMap</a></div>
+    </div>
+    <div><a routerLink="/hotVsCold">hotVsCold</a></div>
   </nav>
   <div id="content" style="text-align:center">
     <router-outlet></router-outlet>

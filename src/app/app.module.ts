@@ -24,6 +24,9 @@ import { ForkJoinComponent } from './fork-join/fork-join.component';
 import { ExhaustMapComponent } from './exhaust-map/exhaust-map.component';
 import { CombineAllComponent } from './combine-all/combine-all.component';
 import { MergeMapComponent } from './merge-map/merge-map.component';
+import { HotVsColdComponent } from './hot-vs-cold/hot-vs-cold.component';
+import { ConcatMapComponent } from './concat-map/concat-map.component';
+import { DelayWhenComponent } from './delay-when/delay-when.component';
 
 
 @NgModule({
@@ -48,7 +51,10 @@ import { MergeMapComponent } from './merge-map/merge-map.component';
     ForkJoinComponent,
     ExhaustMapComponent,
     CombineAllComponent,
-    MergeMapComponent
+    MergeMapComponent,
+    HotVsColdComponent,
+    ConcatMapComponent,
+    DelayWhenComponent
   ],
   imports: [
     BrowserModule,

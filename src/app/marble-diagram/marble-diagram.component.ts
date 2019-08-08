@@ -26,6 +26,7 @@ export class MarbleDiagramComponent implements OnInit {
   isStopped = false;
 
   completedXPos: number | undefined = undefined;
+  startedXPos: number | undefined = undefined;
 
   constructor() { }
 
@@ -39,6 +40,7 @@ export class MarbleDiagramComponent implements OnInit {
   }
 
   setObservable(obs: Observable<any>, stopOnComplete = false) {
+    this.startedXPos = 600 - 20;
     obs.subscribe(x => this.addMarble(x), console.error, stopOnComplete ? () => {this.complete(); this.stop(); } : this.complete.bind(this));
   }
 
@@ -59,7 +61,11 @@ export class MarbleDiagramComponent implements OnInit {
       this.marbles : this.marbles.filter(x => x.xPos > -20).map(x => ({text: x.text, xPos: x.xPos - offsetXDelta / 8}));
     this.completedXPos = this.isStopped ?
       this.completedXPos : this.completedXPos - offsetXDelta / 8;
+    this.startedXPos = this.isStopped ?
+      this.startedXPos : this.startedXPos - offsetXDelta / 8;
     this.ctx.clearRect(0, 0, this.ctx.canvas.width + 20, this.ctx.canvas.height + 20);
+
+    this.ctx.lineWidth = 3;
     this.ctx.fillStyle = 'blue';
     this.ctx.strokeStyle = 'blue';
     this.ctx.beginPath();       // Start a new path
@@ -67,11 +73,29 @@ export class MarbleDiagramComponent implements OnInit {
     this.ctx.lineTo(600, 35);
     this.ctx.stroke();
     if (this.completedXPos !== undefined) {
+      this.ctx.strokeStyle = 'red';
+      this.ctx.lineWidth = 4;
       this.ctx.beginPath();       // Start a new path
-      this.ctx.moveTo(this.completedXPos, 5);
-      this.ctx.lineTo(this.completedXPos, 65);
+      this.ctx.moveTo(this.completedXPos, 0);
+      this.ctx.lineTo(this.completedXPos, 70);
       this.ctx.stroke();
     }
+    if (this.startedXPos !== undefined) {
+      this.ctx.fillStyle = 'lightgreen';
+      this.ctx.strokeStyle = 'lightgreen';
+      this.ctx.lineWidth = 4;
+      this.ctx.beginPath();       // Start a new path
+      this.ctx.arc(this.startedXPos, 35, 12, 0, 2 * Math.PI);
+      this.ctx.stroke();
+      this.ctx.fill();
+      this.ctx.stroke();
+      this.ctx.beginPath();       // Start a new path
+      this.ctx.moveTo(this.startedXPos, 0);
+      this.ctx.lineTo(this.startedXPos, 70);
+      this.ctx.stroke();
+    }
+
+    this.ctx.lineWidth = 2;
     this.marbles.forEach(x => {
       this.ctx.fillStyle = 'white';
       this.ctx.strokeStyle = 'blue';

@@ -1,9 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { pipe } from 'rxjs/util/pipe';
-import { map, filter, debounceTime, tap, share } from 'rxjs/operators';
+import { map, filter, debounceTime, tap, share, scan, withLatestFrom } from 'rxjs/operators';
 import { interval } from 'rxjs/observable/interval';
 import { MarbleDiagramComponent } from '../marble-diagram/marble-diagram.component';
+import { fromEvent } from 'rxjs/observable/fromEvent';
+import { reduce } from 'rxjs/operator/reduce';
 
 @Component({
   selector: 'app-debounce',
@@ -22,8 +24,10 @@ export class DebounceComponent implements OnInit {
 
   ngOnInit() {
     const startTime = Date.now();
-    const obs3 = pipe(filter(() => Math.random() < 0.2), map(x => (x as number).toString(36)))(
-      interval(100)
+    const click$ = fromEvent(document, 'click');
+    const clickCount$ = click$.pipe(scan((acc, val) => acc + 1, 0))
+    const obs3 = pipe(map(x => (x[1] as number)))(
+      fromEvent(document, 'click').pipe(withLatestFrom(clickCount$))
     );
     const sharedExample = obs3.pipe(share());
     sharedExample.subscribe(x => this.marble2.addMarble(x));
