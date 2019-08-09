@@ -123,14 +123,20 @@ export class MarbleDiagramComponent implements OnInit, OnDestroy, OnChanges {
     this.marbles.forEach(x => {
       this.ctx.fillStyle = 'white';
       this.ctx.strokeStyle = 'blue';
-      this.ctx.beginPath();       // Start a new path
+
+      this.ctx.font = '18px Lora';
+      const dim = this.ctx.measureText(x.text);
+      this.ctx.beginPath(); // Start a new path
       this.ctx.arc(x.xPos, 35, 23, 0, 2 * Math.PI);
       this.ctx.fill();
       this.ctx.stroke();
-      this.ctx.font = '16px serif';
-      const dim = this.ctx.measureText(x.text);
+      if (dim.width > 23) {
+        this.ctx.fillStyle = 'white';
+        this.ctx.strokeStyle = 'blue';
+        this.ctx.clearRect(x.xPos - dim.width / 2, 35 - 10, dim.width, 20);
+      }
       this.ctx.fillStyle = 'blue';
-      this.ctx.fillText(x.text, x.xPos - dim.width / 2, 35 + 5);
+      this.ctx.fillText(x.text, x.xPos - dim.width / 2, 35 + 6);
     });
   }
 }

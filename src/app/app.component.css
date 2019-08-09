@@ -13,6 +13,27 @@
   margin: 5px;
 }
 
+#main nav {
+  border-right: 1px solid lightgray;
+  height: calc(100vh - 16px);
+  overflow-y: scroll;
+}
+#main nav a{
+  text-decoration: none;
+}
+
+#main nav a.active-link{
+  color: goldenrod;
+}
+
+#main nav a:hover::after{
+  content: " ▶";
+}
+
+#main nav a.active-link:hover::after{
+  content: "";
+}
+
 #main #content {
   width: calc(100% - 302px);
 }

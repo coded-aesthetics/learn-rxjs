@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Observable } from 'rxjs/Observable';
 import { map, switchMap, withLatestFrom, scan } from 'rxjs/operators';
-import { pipe } from 'rxjs';
+import { pipe, timer } from 'rxjs';
 import { from } from 'rxjs/observable/from';
 import { interval } from 'rxjs/observable/interval';
 import { fromEvent } from 'rxjs/observable/fromEvent';
@@ -30,8 +30,8 @@ export class SwitchMapComponent implements OnInit {
     this.observable = pipe(withLatestFrom(obs2), map(x => x[0] + ' <---> ' + x[1]))(obs1);
 
     const clicks = fromEvent(document, 'click');
-    let clickCount = pipe(scan((acc) => acc + 1, 0))(clicks as Observable<number>);
-    const result = clicks.pipe(withLatestFrom(clickCount), switchMap(([ev, ct]) => pipe(map(() => ct))(interval(300))));
+    let clickCount = pipe(scan((acc) => acc + 1, 0))(clicks);
+    const result = clicks.pipe(withLatestFrom(clickCount), switchMap(([ev, ct]) => pipe(map(() => ct))(timer(0, 300))));
     this.marble.setObservable(result);
   }
 

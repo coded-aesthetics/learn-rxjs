@@ -15,6 +15,10 @@ export class ConcatMapComponent implements OnInit {
   @ViewChild('marble', { static: true })
   marble: MarbleDiagramComponent;
 
+  get hasObservables() {
+    return this.observables.length > 0;
+  }
+
   queuedObservablesCount = 0;
   finishedObservablesCount = 0;
   startedObservablesCount = 0;

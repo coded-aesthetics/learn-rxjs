@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+h1 {
+  font-family: 'Didact Gothic', sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+}
+
+h2, a {
+  font-family: 'PT Sans', serif;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+h3 {
+  font-family: 'PT Sans', serif;
+  font-size: 16px;
+  font-weight: 400;
+}

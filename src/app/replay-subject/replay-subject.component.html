@@ -4,6 +4,7 @@
   <app-marble-diagram #marble></app-marble-diagram>
   <h2>Replayed observable on click (real-time)</h2>
   <app-marble-diagram [observable]="observable"></app-marble-diagram>
-  <h2>Replayed observable on click (with slowed-down initial sequence). Note that real emitted values may overlap the slowed-down sequence. This is just to show, that all values are replayed in the beginning. Above, that sequence seems to be one single emit, when in reality there are several values emitted in close succession.</h2>
+  <h2>Replayed observable on click (with slowed-down initial sequence): </h2>
+  <h3>Note that real emitted values may overlap the slowed-down sequence. This is just to show, that all values are replayed in the beginning. Above, that sequence seems to be one single emit, when in reality there are several values emitted in close succession.</h3>
   <app-marble-diagram [observable]="observable2"></app-marble-diagram>
 </div>

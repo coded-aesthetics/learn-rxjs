@@ -51,7 +51,7 @@ export class AsyncSubjectComponent implements OnInit, OnDestroy {
       setTimeout(() => {
         this.marble.stop();
         this.marble2.stop();
-      }, 1000);
+      }, 0);
     });
   }
 

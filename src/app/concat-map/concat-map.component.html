@@ -1,7 +1,8 @@
 <div>
     <h1>Upon click, a new timer stream will be concatMapped into the observable.</h1>
     <h2>When there currently are many streams to be concatMapped into the observable, they are queued and have to wait for all other waiting observables to finish.</h2>
-    Queued Observables: {{ queuedObservablesCount }}
+    <h3>Queued Observables: {{ queuedObservablesCount }}</h3>
+    <h2 [hidden]="!hasObservables">Current inner observable:</h2>
     <app-marble-diagram *ngFor="let observable of observables" [observable]="observable"></app-marble-diagram>
     <h2>Merged stream:</h2>
     <app-marble-diagram #marble></app-marble-diagram>

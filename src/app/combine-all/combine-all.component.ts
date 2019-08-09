@@ -43,10 +43,10 @@ export class CombineAllComponent implements OnInit {
   ngOnInit() {
     const clicks = fromEvent(document, 'click');
     let clickCount = pipe(startWith(0), scan((acc) => acc + 1, 0))(clicks);
-    const obs1 = timer(700, 2000 * Math.random()).pipe(take(5));
-    const obs2 = timer(1000, 2000 * Math.random()).pipe(take(5));
-    const obs3 = timer(200, 2000 * Math.random()).pipe(take(5));
-    const obs4 = timer(500, 2000 * Math.random()).pipe(take(5));
+    const obs1 = timer(2000 * Math.random(), 2000 * Math.random()).pipe(take(5));
+    const obs2 = timer(2000 * Math.random(), 2000 * Math.random()).pipe(take(5));
+    const obs3 = timer(2000 * Math.random(), 2000 * Math.random()).pipe(take(5));
+    const obs4 = timer(2000 * Math.random(), 2000 * Math.random()).pipe(take(5));
     const obses = of(obs1, obs2, obs3, obs4);
     const startReplay = (ob) => {
       this.marble4.setObservable(ob, true);
