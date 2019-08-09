@@ -12,7 +12,7 @@ import { fromEvent } from 'rxjs/observable/fromEvent';
   styleUrls: ['./from-event.component.css']
 })
 export class FromEventComponent implements OnInit {
-  @ViewChild('marble')
+  @ViewChild('marble', { static: true })
   marble: MarbleDiagramComponent;
 
   public observable: Observable<any>;

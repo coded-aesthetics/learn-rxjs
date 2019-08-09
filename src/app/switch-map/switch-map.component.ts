@@ -15,7 +15,7 @@ import { MarbleDiagramComponent } from '../marble-diagram/marble-diagram.compone
   providers:  [ ApiService ]
 })
 export class SwitchMapComponent implements OnInit {
-  @ViewChild('marble')
+  @ViewChild('marble', { static: true })
   marble: MarbleDiagramComponent;
   public observable: Observable<any>;
 

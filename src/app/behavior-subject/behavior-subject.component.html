@@ -1,0 +1,8 @@
+<div>
+  <h1>Click to start a new subscription to the BehaviorSubject.</h1>
+  <h2>BehaviorSubjects need to have an initial value.</h2>
+  <h2>These are all the values passing through the BehaviorSubject</h2>
+  <app-marble-diagram #marble [observable]="observableSource"></app-marble-diagram>
+  <h2>New subscribers will get the last emitted value from the behaviorSubject first. Kind of like ReplaySubject(1);</h2>
+  <app-marble-diagram #marble2 [observable]="observableToGo"></app-marble-diagram>
+</div>

@@ -11,9 +11,9 @@ import { interval } from 'rxjs/observable/interval';
   styleUrls: ['./reduce.component.css']
 })
 export class ReduceComponent implements OnInit {
-  @ViewChild('marble')
+  @ViewChild('marble', { static: true })
   marble: MarbleDiagramComponent;
-  @ViewChild('marble2')
+  @ViewChild('marble2', { static: true })
   marble2: MarbleDiagramComponent;
 
   public observable: Observable<any>;
@@ -29,7 +29,7 @@ export class ReduceComponent implements OnInit {
       this.marble2.stop();
       this.marble2.complete();
     });
-    this.observable = pipe(reduce((acc, cur) => acc + cur, 0), tap(x => this.marble.addMarble(x)))(obs3);
+    this.observable = pipe(reduce((acc: number, cur: number) => acc + cur, 0), tap(x => this.marble.addMarble(x)))(obs3);
     this.observable.subscribe(x => x, console.error, () => {
       this.marble.stop();
       this.marble.complete();

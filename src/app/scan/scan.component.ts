@@ -11,9 +11,9 @@ import { interval } from 'rxjs/observable/interval';
   styleUrls: ['./scan.component.css']
 })
 export class ScanComponent implements OnInit {
-  @ViewChild('marble')
+  @ViewChild('marble', { static: true })
   marble: MarbleDiagramComponent;
-  @ViewChild('marble2')
+  @ViewChild('marble2', { static: true })
   marble2: MarbleDiagramComponent;
 
   public observable: Observable<any>;
@@ -26,6 +26,6 @@ export class ScanComponent implements OnInit {
       interval(333)
     ;
     obs3.subscribe(x => this.marble2.addMarble(x));
-    this.observable = pipe(scan((acc, cur) => acc + cur, 0), tap(x => this.marble.addMarble(x)))(obs3);
+    this.observable = pipe(scan((acc: number, cur: number) => acc + cur, 0), tap(x => this.marble.addMarble(x)))(obs3);
   }
 }

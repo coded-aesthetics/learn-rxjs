@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input, OnDestroy, OnChanges, SimpleChanges } from '@angular/core';
 import { Observable, pipe, Subscription } from 'rxjs';
 import { timer } from 'rxjs/observable/timer';
 import { map, tap } from 'rxjs/operators';
@@ -9,10 +9,10 @@ import { interval } from 'rxjs/observable/interval';
   templateUrl: './marble-diagram.component.html',
   styleUrls: ['./marble-diagram.component.css']
 })
-export class MarbleDiagramComponent implements OnInit, OnDestroy {
+export class MarbleDiagramComponent implements OnInit, OnDestroy, OnChanges {
   @Input() observable: Observable<any>;
 
-  @ViewChild('canvas')
+  @ViewChild('canvas', { static: true })
   canvas: any;
 
   ctx: CanvasRenderingContext2D;
@@ -32,6 +32,13 @@ export class MarbleDiagramComponent implements OnInit, OnDestroy {
 
   constructor() { }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+    if (changes.observable.currentValue) {
+      this.setObservable(changes.observable.currentValue);
+    }
+  }
+
   ngOnInit() {
     if (this.observable) {
       this.setObservable(this.observable);
@@ -49,6 +56,8 @@ export class MarbleDiagramComponent implements OnInit, OnDestroy {
 
   setObservable(obs: Observable<any>, stopOnComplete = false) {
     this.startedXPos = 600 - 20;
+    this.completedXPos = undefined;
+    this.marbles = [];
     if (this.sub) {
       this.sub.unsubscribe();
     }
@@ -61,6 +70,10 @@ export class MarbleDiagramComponent implements OnInit, OnDestroy {
 
   stop() {
     this.isStopped = true;
+  }
+
+  restart() {
+    this.isStopped = false;
   }
 
   complete() {

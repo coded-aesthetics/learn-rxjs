@@ -11,9 +11,9 @@ import { pipe } from 'rxjs/util/pipe';
   styleUrls: ['./buffer-time.component.css']
 })
 export class BufferTimeComponent implements OnInit {
-  @ViewChild('marble')
+  @ViewChild('marble', { static: true })
   marble: MarbleDiagramComponent;
-  @ViewChild('marble2')
+  @ViewChild('marble2', { static: true })
   marble2: MarbleDiagramComponent;
 
   public observable: Observable<any>;

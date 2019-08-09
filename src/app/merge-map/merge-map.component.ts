@@ -12,7 +12,7 @@ import { pipe } from 'rxjs/util/pipe';
   styleUrls: ['./merge-map.component.css']
 })
 export class MergeMapComponent implements OnInit {
-  @ViewChild('marble')
+  @ViewChild('marble', { static: true })
   marble: MarbleDiagramComponent;
 
   observables: Observable<any>[] = [];

@@ -29,6 +29,10 @@ import { ConcatMapComponent } from './concat-map/concat-map.component';
 import { DelayWhenComponent } from './delay-when/delay-when.component';
 import { ElementAtComponent } from './element-at/element-at.component';
 import { DistinctComponent } from './distinct/distinct.component';
+import { ReplaySubjectComponent } from './replay-subject/replay-subject.component';
+import { AsyncSubjectComponent } from './async-subject/async-subject.component';
+import { BehaviorSubjectComponent } from './behavior-subject/behavior-subject.component';
+import { RaceComponent } from './race/race.component';
 
 
 @NgModule({
@@ -58,7 +62,11 @@ import { DistinctComponent } from './distinct/distinct.component';
     ConcatMapComponent,
     DelayWhenComponent,
     ElementAtComponent,
-    DistinctComponent
+    DistinctComponent,
+    ReplaySubjectComponent,
+    AsyncSubjectComponent,
+    BehaviorSubjectComponent,
+    RaceComponent
   ],
   imports: [
     BrowserModule,

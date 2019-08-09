@@ -13,9 +13,9 @@ import { interval } from 'rxjs/observable/interval';
   styleUrls: ['./delay-when.component.css']
 })
 export class DelayWhenComponent implements OnInit {
-  @ViewChild('marble')
+  @ViewChild('marble', { static: true })
   marble: MarbleDiagramComponent;
-  @ViewChild('marble2')
+  @ViewChild('marble2', { static: true })
   marble2: MarbleDiagramComponent;
 
   observables: Observable<any>[] = [];

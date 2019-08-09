@@ -15,13 +15,13 @@ import { from } from 'rxjs/observable/from';
   styleUrls: ['./fork-join.component.css']
 })
 export class ForkJoinComponent implements OnInit {
-  @ViewChild('marble')
+  @ViewChild('marble', { static: true })
   marble: MarbleDiagramComponent;
-  @ViewChild('marble2')
+  @ViewChild('marble2', { static: true })
   marble2: MarbleDiagramComponent;
-  @ViewChild('marble3')
+  @ViewChild('marble3', { static: true })
   marble3: MarbleDiagramComponent;
-  @ViewChild('marble4')
+  @ViewChild('marble4', { static: true })
   marble4: MarbleDiagramComponent;
   public observable: Observable<any>;
 

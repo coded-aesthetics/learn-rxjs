@@ -12,7 +12,7 @@ import { pipe } from 'rxjs/util/pipe';
   styleUrls: ['./concat-map.component.css']
 })
 export class ConcatMapComponent implements OnInit {
-  @ViewChild('marble')
+  @ViewChild('marble', { static: true })
   marble: MarbleDiagramComponent;
 
   queuedObservablesCount = 0;

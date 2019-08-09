@@ -13,11 +13,11 @@ import { combineLatest } from 'rxjs/observable/combineLatest';
   styleUrls: ['./combine-lastest.component.css']
 })
 export class CombineLastestComponent implements OnInit {
-  @ViewChild('marble')
+  @ViewChild('marble', { static: true })
   marble: MarbleDiagramComponent;
-  @ViewChild('marble2')
+  @ViewChild('marble2', { static: true })
   marble2: MarbleDiagramComponent;
-  @ViewChild('marble3')
+  @ViewChild('marble3', { static: true })
   marble3: MarbleDiagramComponent;
   public observable: Observable<any>;
 

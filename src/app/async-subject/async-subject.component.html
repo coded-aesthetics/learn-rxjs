@@ -1,0 +1,7 @@
+<div>
+  <h1>Click once to start the subjects being fed. Click the second time to stop.</h1>
+  <h2>These are all the values passing through the AsyncSubject</h2>
+  <app-marble-diagram #marble [observable]="observableSource"></app-marble-diagram>
+  <h2>AsyncSubject will emit its latest value on complete. Will never emit if no value has been passing through.</h2>
+  <app-marble-diagram #marble2 [observable]="observable"></app-marble-diagram>
+</div>

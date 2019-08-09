@@ -11,9 +11,9 @@ import { interval } from 'rxjs/observable/interval';
   styleUrls: ['./distinct-until-changed.component.css']
 })
 export class DistinctUntilChangedComponent implements OnInit {
-  @ViewChild('marble')
+  @ViewChild('marble', { static: true })
   marble: MarbleDiagramComponent;
-  @ViewChild('marble2')
+  @ViewChild('marble2', { static: true })
   marble2: MarbleDiagramComponent;
 
   public observable: Observable<any>;

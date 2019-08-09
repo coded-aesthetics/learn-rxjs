@@ -14,7 +14,7 @@ import { MarbleDiagramComponent } from '../marble-diagram/marble-diagram.compone
   styleUrls: ['./exhaust-map.component.css']
 })
 export class ExhaustMapComponent implements OnInit {
-  @ViewChild('marble')
+  @ViewChild('marble', { static: true })
   marble: MarbleDiagramComponent;
   public observable: Observable<any>;
 
@@ -22,7 +22,7 @@ export class ExhaustMapComponent implements OnInit {
 
   ngOnInit() {
     const clicks = fromEvent(document, 'click');
-    let clickCount = pipe(scan((acc) => acc + 1, 0))(clicks as Observable<number>);
+    let clickCount = pipe(scan((acc) => acc + 1, 0))(clicks);
     const result = clicks.pipe(withLatestFrom(clickCount), exhaustMap(([ev, ct]) => pipe(map(() => ct), take(4))(interval(300))));
     this.marble.setObservable(result);
   }

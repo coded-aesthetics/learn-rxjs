@@ -24,6 +24,10 @@ import { ConcatMapComponent } from './concat-map/concat-map.component';
 import { DelayWhenComponent } from './delay-when/delay-when.component';
 import { ElementAtComponent } from './element-at/element-at.component';
 import { DistinctComponent } from './distinct/distinct.component';
+import { ReplaySubjectComponent } from './replay-subject/replay-subject.component';
+import { AsyncSubjectComponent } from './async-subject/async-subject.component';
+import { BehaviorSubjectComponent } from './behavior-subject/behavior-subject.component';
+import { RaceComponent } from './race/race.component';
 
 const routes: Routes = [
   { path: 'switchMap', component: SwitchMapComponent },
@@ -31,6 +35,7 @@ const routes: Routes = [
   { path: 'debounce', component: DebounceComponent },
   { path: 'zip', component: ZipComponent },
   { path: 'merge', component: MergeComponent },
+  { path: 'race', component: RaceComponent },
   { path: 'bufferTime', component: BufferTimeComponent },
   { path: 'map', component: MapComponent },
   { path: 'scan', component: ScanComponent },
@@ -49,6 +54,9 @@ const routes: Routes = [
   { path: 'hotVsCold', component: HotVsColdComponent },
   { path: 'concatMap', component: ConcatMapComponent },
   { path: 'delayWhen', component: DelayWhenComponent },
+  { path: 'replaySubject', component: ReplaySubjectComponent },
+  { path: 'asyncSubject', component: AsyncSubjectComponent },
+  { path: 'behaviorSubject', component: BehaviorSubjectComponent },
   { path: 'filter', component: FilterComponent }
 ];
 

@@ -11,9 +11,9 @@ import { MarbleDiagramComponent } from '../marble-diagram/marble-diagram.compone
   styleUrls: ['./throttle.component.css']
 })
 export class ThrottleComponent implements OnInit {
-  @ViewChild('marble')
+  @ViewChild('marble', { static: true })
   marble: MarbleDiagramComponent;
-  @ViewChild('marble2')
+  @ViewChild('marble2', { static: true })
   marble2: MarbleDiagramComponent;
 
   public observable: Observable<any>;
