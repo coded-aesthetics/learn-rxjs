@@ -1,10 +1,16 @@
 <div>
-  <h1>zip waits until both observables have emitted.
-      it pairs the first emit of the first observable with the first emit of the second.
-      the second emit of the first with the second of the second etc.</h1>
-  <h2>Will complete, when the end of any of the zipped observables is reached</h2>
-  <h2>{{ observable | async }}</h2>
-  <app-marble-diagram #marble2></app-marble-diagram>
-  <app-marble-diagram #marble></app-marble-diagram>
-  <app-marble-diagram #marble3></app-marble-diagram>
+  <app-page-header [topic]="'zip'" [headline]="'After all observables emit, emit values as an array'"></app-page-header>
+  <div class="page-content-container">
+    <div class="page-content">
+      <h2>zip waits until both observables have emitted.
+          it pairs the first emit of the first observable with the first emit of the second.
+          the second emit of the first with the second of the second etc.</h2>
+      <h2>Will complete, when the end of any of the zipped observables is reached</h2>
+      <h3>Source observables</h3>
+      <app-marble-diagram #marble2></app-marble-diagram>
+      <app-marble-diagram #marble></app-marble-diagram>
+      <h3>Zipped observable</h3>
+      <app-marble-diagram #marble3></app-marble-diagram>
+    </div>
+  </div>
 </div>

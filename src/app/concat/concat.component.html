@@ -1,7 +1,12 @@
 <div>
-  <h1>Creates an output Observable which sequentially emits all values from given Observable and then moves on to the next.</h1>
-  <h2>{{ observable | async }}</h2>
-  <app-marble-diagram #marble2></app-marble-diagram>
-  <app-marble-diagram #marble></app-marble-diagram>
-  <app-marble-diagram #marble3></app-marble-diagram>
+  <app-page-header [topic]="'concat'"></app-page-header>
+  <div class="page-content">
+    <h1>Subscribe to observables in order as previous completes</h1>
+    <h2>Creates an output Observable which sequentially emits all values from given Observable and then moves on to the next.</h2>
+    <h3>Source observables</h3>
+    <app-marble-diagram #marble2></app-marble-diagram>
+    <app-marble-diagram #marble></app-marble-diagram>
+    <h3>Concatted observable</h3>
+    <app-marble-diagram #marble3></app-marble-diagram>
+  </div>
 </div>

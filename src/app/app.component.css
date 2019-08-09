@@ -1,5 +1,6 @@
 #main {
   display: flex;
+  flex-wrap: wrap;
 }
 
 #main #navigation {
@@ -7,6 +8,7 @@
   display: block;
   font-size: 18px;
   font-family: sans-serif;
+  height: calc(100vh - 59px);
 }
 
 #main #navigation div {
@@ -14,12 +16,19 @@
 }
 
 #main nav {
-  border-right: 1px solid lightgray;
   height: calc(100vh - 16px);
-  overflow-y: scroll;
+  overflow-y: auto;
+  background-color: #03192B;
+  direction: rtl;
 }
 #main nav a{
   text-decoration: none;
+  color:whitesmoke;
+  direction: ltr;
+  padding-left: 5px;
+}
+#main nav div{
+  direction: ltr;
 }
 
 #main nav a.active-link{

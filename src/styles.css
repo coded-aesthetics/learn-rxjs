@@ -1,8 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 h1 {
   font-family: 'Didact Gothic', sans-serif;
-  font-size: 40px;
-  font-weight: 600;
+  font-size: 30px;
+  font-weight: 400;
+  color: #a11078;
 }
 
 h2, a {
@@ -12,7 +13,17 @@ h2, a {
 }
 
 h3 {
-  font-family: 'PT Sans', serif;
-  font-size: 16px;
+  font-family: 'Didact Gothic', serif;
+  font-size: 18px;
   font-weight: 400;
+}
+body {
+  color: #03192B;
+}
+
+
+
+.page-content {
+  padding: 20px;
+  max-width: 700px;
 }

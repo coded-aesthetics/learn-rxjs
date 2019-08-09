@@ -1,0 +1,35 @@
+#header-component {
+  height:30px;
+  min-width: calc(100vw - 25px);
+  background-color: #03192B;
+  color:white;
+}
+
+#header-component-wrapper {
+  border: 1px solid lightgrey;
+  padding: 3px;
+}
+
+#header-left {
+  width: calc(100% - 305px);
+  float:left;
+  text-align:left;
+  font-family: 'PT Sans', sans-serif;
+  font-weight: bold;
+  padding:5px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow:hidden;
+}
+
+#header-right {
+  width: 295px;
+  float:left;
+  text-align:right;
+}
+
+@media (max-width: 700px) {
+  #header-component {
+    min-width: calc(100vw - 34px);
+  }
+}

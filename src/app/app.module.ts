@@ -33,6 +33,8 @@ import { ReplaySubjectComponent } from './replay-subject/replay-subject.componen
 import { AsyncSubjectComponent } from './async-subject/async-subject.component';
 import { BehaviorSubjectComponent } from './behavior-subject/behavior-subject.component';
 import { RaceComponent } from './race/race.component';
+import { HeaderComponent } from './header/header.component';
+import { PageHeaderComponent } from './page-header/page-header.component';
 
 
 @NgModule({
@@ -55,6 +57,7 @@ import { RaceComponent } from './race/race.component';
     PairsComponent,
     FromEventComponent,
     ForkJoinComponent,
+    HeaderComponent,
     ExhaustMapComponent,
     CombineAllComponent,
     MergeMapComponent,
@@ -66,7 +69,8 @@ import { RaceComponent } from './race/race.component';
     ReplaySubjectComponent,
     AsyncSubjectComponent,
     BehaviorSubjectComponent,
-    RaceComponent
+    RaceComponent,
+    PageHeaderComponent
   ],
   imports: [
     BrowserModule,

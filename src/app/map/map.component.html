@@ -1,6 +1,10 @@
 <div>
-  <h1>Map every value to x * x.</h1>
-  <h2>{{ observable | async }}</h2>
-  <app-marble-diagram #marble2></app-marble-diagram>
-  <app-marble-diagram #marble></app-marble-diagram>
+  <app-page-header [topic]="'map'" [headline]="'Apply projection with each value from source.'"></app-page-header>
+  <div class="page-content">
+    <h2>Map every value to x * x.</h2>
+    <h3>Source observable</h3>
+    <app-marble-diagram #marble2></app-marble-diagram>
+    <h3>Mapped observable</h3>
+    <app-marble-diagram #marble></app-marble-diagram>
+  </div>
 </div>

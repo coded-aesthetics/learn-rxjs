@@ -1,22 +1,24 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { MarbleDiagramComponent } from '../marble-diagram/marble-diagram.component';
 import { Observable } from 'rxjs/Observable';
 import { map, throttleTime, tap, bufferTime, filter, share } from 'rxjs/operators';
 import { interval } from 'rxjs/observable/interval';
 import { pipe } from 'rxjs/util/pipe';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-buffer-time',
   templateUrl: './buffer-time.component.html',
   styleUrls: ['./buffer-time.component.css']
 })
-export class BufferTimeComponent implements OnInit {
+export class BufferTimeComponent implements OnInit, OnDestroy {
   @ViewChild('marble', { static: true })
   marble: MarbleDiagramComponent;
   @ViewChild('marble2', { static: true })
   marble2: MarbleDiagramComponent;
 
   public observable: Observable<any>;
+  public subscription: Subscription;
 
   constructor() {}
 
@@ -29,5 +31,12 @@ export class BufferTimeComponent implements OnInit {
     sharedExample.subscribe(x => this.marble2.addMarble(x));
     this.observable = pipe(bufferTime(1000), map(x => JSON.stringify(x).split('"').join('')),
       tap(x => this.marble.addMarble(x)))(sharedExample);
-  }
+      this.subscription = this.observable.subscribe(x => x);
+    }
+
+    ngOnDestroy(): void {
+      if (this.subscription) {
+        this.subscription.unsubscribe();
+      }
+    }
 }

@@ -1,6 +1,9 @@
 <div>
-    <h1>Debounce: Source emits on mouseclick. Only if the observable has not emitted for 500 ms, is the last event emitted through debounce.</h1>
-    <h2>{{ observable | async }}</h2>
-    <app-marble-diagram #marble2></app-marble-diagram>
-    <app-marble-diagram #marble></app-marble-diagram>
+    <app-page-header [topic]="'debounce'" ></app-page-header>
+    <div class="page-content">
+      <h1>Discard emitted values that take less than the specified time, based on selector function, between output.</h1>
+      <h2>Source emits on mouseclick. Only if the observable has not emitted for 500 ms, is the last event emitted through debounce.</h2>
+      <app-marble-diagram #marble2></app-marble-diagram>
+      <app-marble-diagram #marble></app-marble-diagram>
+    </div>
   </div>

@@ -30,6 +30,8 @@ export class MarbleDiagramComponent implements OnInit, OnDestroy, OnChanges {
 
   sub: Subscription;
 
+  marbleRadius = 23;
+
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -55,7 +57,7 @@ export class MarbleDiagramComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   setObservable(obs: Observable<any>, stopOnComplete = false) {
-    this.startedXPos = 600 - 20;
+    this.startedXPos = 600 - this.marbleRadius;
     this.completedXPos = undefined;
     this.marbles = [];
     if (this.sub) {
@@ -65,7 +67,7 @@ export class MarbleDiagramComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   addMarble(msg: any) {
-    this.marbles.push({text: msg, xPos: 600 - 20});
+    this.marbles.push({text: msg, xPos: 600 - this.marbleRadius});
   }
 
   stop() {
@@ -77,12 +79,12 @@ export class MarbleDiagramComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   complete() {
-    this.completedXPos = 600 - 20;
+    this.completedXPos = 600 - this.marbleRadius;
   }
 
   redraw(offsetXDelta: number) {
     this.marbles = this.isStopped ?
-      this.marbles : this.marbles.filter(x => x.xPos > -20).map(x => ({text: x.text, xPos: x.xPos - offsetXDelta / 8}));
+      this.marbles : this.marbles.filter(x => x.xPos > -this.marbleRadius).map(x => ({text: x.text, xPos: x.xPos - offsetXDelta / 8}));
     this.completedXPos = this.isStopped ?
       this.completedXPos : this.completedXPos - offsetXDelta / 8;
     this.startedXPos = this.isStopped ?
@@ -90,8 +92,8 @@ export class MarbleDiagramComponent implements OnInit, OnDestroy, OnChanges {
     this.ctx.clearRect(0, 0, this.ctx.canvas.width + 20, this.ctx.canvas.height + 20);
 
     this.ctx.lineWidth = 3;
-    this.ctx.fillStyle = 'blue';
-    this.ctx.strokeStyle = 'blue';
+    this.ctx.fillStyle = '#03192B';
+    this.ctx.strokeStyle = '#03192B';
     this.ctx.beginPath();       // Start a new path
     this.ctx.moveTo(0, 35);
     this.ctx.lineTo(600, 35);
@@ -122,20 +124,20 @@ export class MarbleDiagramComponent implements OnInit, OnDestroy, OnChanges {
     this.ctx.lineWidth = 2;
     this.marbles.forEach(x => {
       this.ctx.fillStyle = 'white';
-      this.ctx.strokeStyle = 'blue';
+      this.ctx.strokeStyle = '#03192B';
 
       this.ctx.font = '18px Lora';
       const dim = this.ctx.measureText(x.text);
       this.ctx.beginPath(); // Start a new path
-      this.ctx.arc(x.xPos, 35, 23, 0, 2 * Math.PI);
+      this.ctx.arc(x.xPos, 35, this.marbleRadius, 0, 2 * Math.PI);
       this.ctx.fill();
       this.ctx.stroke();
-      if (dim.width > 23) {
+      if (dim.width > this.marbleRadius) {
         this.ctx.fillStyle = 'white';
-        this.ctx.strokeStyle = 'blue';
+        this.ctx.strokeStyle = '#03192B';
         this.ctx.clearRect(x.xPos - dim.width / 2, 35 - 10, dim.width, 20);
       }
-      this.ctx.fillStyle = 'blue';
+      this.ctx.fillStyle = '#03192B';
       this.ctx.fillText(x.text, x.xPos - dim.width / 2, 35 + 6);
     });
   }

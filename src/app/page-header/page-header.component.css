@@ -1,0 +1,39 @@
+#page-header {
+  display: flex;
+}
+
+#page-header #page-header-left {
+  background-color: #03192B;
+  color:white;
+  font-family: 'Didact Gothic', sans-serif;
+  font-size: 70px;
+  font-weight: 400;
+  padding-left:40px;
+  padding-right:40px;
+  max-height: 100px;
+}
+
+#page-header #page-header-middle {
+  width: 0;
+  height: 0;
+  border-top: 100px solid #03192B;
+  border-right: 100px solid transparent;
+}
+
+#page-header #page-header-right {
+  display: flex;
+  align-items: center;
+}
+
+#page-header #page-header-right .headline{
+  font-family: 'Didact Gothic', sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+  max-height: 100px;
+  overflow: hidden;
+}
+#page-header #page-header-right .description {
+  font-family: 'Didact Gothic', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}

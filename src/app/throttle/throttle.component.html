@@ -1,6 +1,10 @@
 <div>
-  <h1>Throttle: Source observable emits every 333 ms, but is throttled to never emit less than 1000ms apart</h1>
-  <h2>{{ observable | async }}</h2>
-  <app-marble-diagram #marble2></app-marble-diagram>
-  <app-marble-diagram #marble></app-marble-diagram>
+  <app-page-header [topic]="'throttle'"></app-page-header>
+  <div class="page-content">
+    <h1>Emit value on the leading edge of an interval, but suppress new values until durationSelector has completed
+      </h1>
+    <h2>Throttle: Source observable emits every 333 ms, but is throttled to never emit less than 1000ms apart</h2>
+    <app-marble-diagram #marble2></app-marble-diagram>
+    <app-marble-diagram #marble></app-marble-diagram>
+  </div>
 </div>

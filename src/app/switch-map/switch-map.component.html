@@ -1,6 +1,10 @@
 <div>
   <!--<h1>Combine two streams, that get data from an API on each emit</h1>
   <h2>{{ observable | async }}</h2>-->
-  <h1>switch to a different timer observable on each click</h1>
-  <app-marble-diagram #marble></app-marble-diagram>
+  <app-page-header [topic]="'switchMap'"></app-page-header>
+  <div class="page-content">
+    <h1>Map to observable, complete previous inner observable, emit values.</h1>
+    <h2>Switch to a different timer observable on each click</h2>
+    <app-marble-diagram #marble></app-marble-diagram>
+  </div>
 </div>

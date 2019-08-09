@@ -9,6 +9,13 @@
 
 }
 
+#combine-all-outer {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+}
+
 #combine-all .caption{
   width: 350px;
 }

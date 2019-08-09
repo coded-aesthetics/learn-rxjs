@@ -1,6 +1,10 @@
 <div>
-  <h1>Filter out every number that is a multiple of 2 or 3.</h1>
-  <h2>{{ observable | async }}</h2>
-  <app-marble-diagram #marble2></app-marble-diagram>
-  <app-marble-diagram #marble></app-marble-diagram>
+  <app-page-header [topic]="'filter'" [headline]="'Emit values that pass the provided condition.'"></app-page-header>
+  <div class="page-content">
+    <h2>Filter out every number that is a multiple of 2 or 3.</h2>
+    <h3>Source observable</h3>
+    <app-marble-diagram #marble2></app-marble-diagram>
+    <h3>Filtered observable</h3>
+    <app-marble-diagram #marble></app-marble-diagram>
+  </div>
 </div>
