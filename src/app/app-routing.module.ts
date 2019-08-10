@@ -28,12 +28,14 @@ import { ReplaySubjectComponent } from './replay-subject/replay-subject.componen
 import { AsyncSubjectComponent } from './async-subject/async-subject.component';
 import { BehaviorSubjectComponent } from './behavior-subject/behavior-subject.component';
 import { RaceComponent } from './race/race.component';
+import { IntroductionComponent } from './introduction/introduction.component';
 
 const routes: Routes = [
   { path: 'switchMap', component: SwitchMapComponent },
   { path: 'throttle', component: ThrottleComponent },
   { path: 'debounce', component: DebounceComponent },
   { path: 'zip', component: ZipComponent },
+  { path: '', component: IntroductionComponent },
   { path: 'merge', component: MergeComponent },
   { path: 'race', component: RaceComponent },
   { path: 'bufferTime', component: BufferTimeComponent },

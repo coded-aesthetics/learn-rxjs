@@ -36,6 +36,7 @@ import { RaceComponent } from './race/race.component';
 import { HeaderComponent } from './header/header.component';
 import { PageHeaderComponent } from './page-header/page-header.component';
 import { FooterComponent } from './footer/footer.component';
+import { IntroductionComponent } from './introduction/introduction.component';
 
 
 @NgModule({
@@ -72,7 +73,8 @@ import { FooterComponent } from './footer/footer.component';
     BehaviorSubjectComponent,
     RaceComponent,
     PageHeaderComponent,
-    FooterComponent
+    FooterComponent,
+    IntroductionComponent
   ],
   imports: [
     BrowserModule,
