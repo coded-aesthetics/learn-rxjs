@@ -1,6 +1,19 @@
 <div>
-  <h1>Upon click, a new timer stream will be mergeMapped into the observable.</h1>
-  <app-marble-diagram *ngFor="let observable of observables" [observable]="observable"></app-marble-diagram>
-  <h2>Merged stream:</h2>
-  <app-marble-diagram #marble></app-marble-diagram>
+  <app-page-header [topic]="'mergeMap'"></app-page-header>
+  <div class="page-content">
+    <h1>
+      Projects each source value to an Observable which is merged in the output
+      Observable.
+    </h1>
+    <h2>
+      Upon click, a new timer stream will be mergeMapped into the observable.
+    </h2>
+    <h3>Individual timer streams</h3>
+    <app-marble-diagram
+      *ngFor="let observable of observables"
+      [observable]="observable"
+    ></app-marble-diagram>
+    <h3>Merged stream</h3>
+    <app-marble-diagram #marble></app-marble-diagram>
+  </div>
 </div>

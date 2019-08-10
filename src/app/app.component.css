@@ -32,7 +32,7 @@
 }
 
 #main nav a.active-link{
-  color: goldenrod;
+  color: #06b0d1;
 }
 
 #main nav a:hover::after{
@@ -45,4 +45,6 @@
 
 #main #content {
   width: calc(100% - 302px);
+  overflow-y: auto;
+  height: calc(100vh - 57px);
 }

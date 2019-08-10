@@ -1,29 +1,27 @@
 <div id="combine-all-outer">
-  <h1>
-      When source observables complete use combineLatest with collected observables.
-  </h1>
-  <div id="combine-all">
-    <div class="caption">
-      <h3>observable started after first mouseclick</h3>
+  <app-page-header
+    [topic]="'combineAll'"
+    [headline]="'When source observables complete use combineLatest with collected observables.'"
+  ></app-page-header>
+  <div class="page-content">
+    <div id="combine-all">
+      <h2>Click four times to start an observable each.</h2>
+      <app-marble-diagram #marble></app-marble-diagram>
+      <app-marble-diagram #marble2></app-marble-diagram>
+      <app-marble-diagram #marble3></app-marble-diagram>
+      <app-marble-diagram #marble4></app-marble-diagram>
+      <div style="width:100%">
+        <h2>
+          As soon as the last observable is started, combineAll starts to replay
+          all observables merged by combineLatest. It then merges the output
+          into one observable.
+        </h2>
+      </div>
+      <app-marble-diagram #marble5></app-marble-diagram>
+      <app-marble-diagram #marble6></app-marble-diagram>
+      <app-marble-diagram #marble7></app-marble-diagram>
+      <app-marble-diagram #marble8></app-marble-diagram>
+      <app-marble-diagram #marble9></app-marble-diagram>
     </div>
-    <app-marble-diagram #marble></app-marble-diagram>
-    <div class="caption">
-      <h3>observable started after second mouseclick</h3>
-    </div>
-    <app-marble-diagram #marble2></app-marble-diagram>
-    <div class="caption">
-      <h3>observable started after third mouseclick</h3>
-    </div>
-    <app-marble-diagram #marble3></app-marble-diagram>
-    <div class="caption">
-      <h3>observable started after fourth mouseclick</h3>
-    </div>
-    <app-marble-diagram #marble4></app-marble-diagram>
-    <div style="width:100%"><h2>As soon as the last observable is started, combineAll starts to replay all observables merged by combineLatest. It then merges the output into one observable.</h2></div>
-    <app-marble-diagram #marble5></app-marble-diagram>
-    <app-marble-diagram #marble6></app-marble-diagram>
-    <app-marble-diagram #marble7></app-marble-diagram>
-    <app-marble-diagram #marble8></app-marble-diagram>
-    <app-marble-diagram #marble9></app-marble-diagram>
   </div>
 </div>

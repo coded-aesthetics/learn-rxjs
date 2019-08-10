@@ -1,8 +1,26 @@
 <div>
-  <h1>Click to start a new subscription to the BehaviorSubject.</h1>
-  <h2>BehaviorSubjects need to have an initial value.</h2>
-  <h2>These are all the values passing through the BehaviorSubject</h2>
-  <app-marble-diagram #marble [observable]="observableSource"></app-marble-diagram>
-  <h2>New subscribers will get the last emitted value from the behaviorSubject first. Kind of like ReplaySubject(1);</h2>
-  <app-marble-diagram #marble2 [observable]="observableToGo"></app-marble-diagram>
+  <app-page-header [topic]="'BehaviorSubject'"></app-page-header>
+  <div class="page-content">
+    <h1>
+      A variant of Subject that requires an initial value and emits its current
+      value whenever it is subscribed to.
+    </h1>
+    <h2>Click to start a new subscription to the BehaviorSubject.</h2>
+    <h2 class="secondary-color">
+      BehaviorSubjects need to have an initial value.
+    </h2>
+    <h3>These are all the values passing through the BehaviorSubject</h3>
+    <app-marble-diagram
+      #marble
+      [observable]="observableSource"
+    ></app-marble-diagram>
+    <h3>
+      New subscribers will get the last emitted value from the BehaviorSubject
+      first. Kind of like ReplaySubject(1);
+    </h3>
+    <app-marble-diagram
+      #marble2
+      [observable]="observableToGo"
+    ></app-marble-diagram>
+  </div>
 </div>

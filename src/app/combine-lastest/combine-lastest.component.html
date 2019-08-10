@@ -1,7 +1,12 @@
 <div>
-  <h1>combineLatest emits the latest value of multiple streams. but only, if every stream has emitted a value yet.</h1>
-  <h2>{{ observable | async }}</h2>
+    <app-page-header
+      [topic]="'combineLatest'"
+    ></app-page-header>
+    <div class="page-content">
+  <h1>CombineLatest emits the latest values of multiple streams. But only, after each stream has emitted a value at least once.</h1>
+  <h3>Source streams</h3>
   <app-marble-diagram #marble2></app-marble-diagram>
   <app-marble-diagram #marble></app-marble-diagram>
+  <h3>Combined stream</h3>
   <app-marble-diagram #marble3></app-marble-diagram>
 </div>

@@ -1,9 +1,20 @@
 <div>
-    <h1>Mouse x-position controls the delay.</h1>
-    <h2>Source observable:</h2>
+  <app-page-header [topic]="'delayWhen'"></app-page-header>
+  <div class="page-content">
+    <h1>
+      Delays the emission of items from the source Observable by a given time
+      span determined by the emissions of another Observable.
+    </h1>
+
+    <h3>Source observable</h3>
     <app-marble-diagram #marble></app-marble-diagram>
-    <h2>Delayed observable:</h2>
+    <h3>Delayed observable</h3>
     <app-marble-diagram #marble2></app-marble-diagram>
-    <h2>Delay streams: will start whenever the source-observable emits and emit after mousepos.clientX milliseconds:</h2>
-    <app-marble-diagram *ngFor="let observable of observables" [observable]="observable"></app-marble-diagram>
+    <h2>Mouse x-position controls the delay.</h2>
+    <h3>Delay streams</h3>
+    <app-marble-diagram
+      *ngFor="let observable of observables"
+      [observable]="observable"
+    ></app-marble-diagram>
   </div>
+</div>

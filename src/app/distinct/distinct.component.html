@@ -1,5 +1,10 @@
 <div>
-    <h1>Only emit values that have not occurred before</h1>
+  <app-page-header [topic]="'distinct'" [headline]="'Only emit values that have not occurred before'"></app-page-header>
+  <div class="page-content">
+    <h2>Returns an Observable that emits all items emitted by the source Observable that are distinct by comparison from previous items.</h2>
+    <h3>Source observable</h3>
     <app-marble-diagram #marble2></app-marble-diagram>
+    <h3>Filtered observable</h3>
     <app-marble-diagram #marble></app-marble-diagram>
   </div>
+</div>

@@ -4,6 +4,7 @@ import { map, throttleTime, tap } from 'rxjs/operators';
 import { pipe } from 'rxjs/util/pipe';
 import { interval } from 'rxjs/observable/interval';
 import { MarbleDiagramComponent } from '../marble-diagram/marble-diagram.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-throttle',

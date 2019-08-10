@@ -1,6 +1,13 @@
 <div>
-  <h1>Returns an Observable that emits all items emitted by the source Observable that are distinct by comparison with the previous item.</h1>
-  <h2>{{ observable | async }}</h2>
-  <app-marble-diagram #marble2></app-marble-diagram>
-  <app-marble-diagram #marble></app-marble-diagram>
+  <app-page-header [topic]="'distinctUntilChanged'"></app-page-header>
+  <div class="page-content">
+    <h1>
+      Returns an Observable that emits all items emitted by the source
+      Observable that are distinct by comparison from the previous item.
+    </h1>
+    <h3>Source observable</h3>
+    <app-marble-diagram #marble2></app-marble-diagram>
+    <h3>Filtered observable</h3>
+    <app-marble-diagram #marble></app-marble-diagram>
+  </div>
 </div>

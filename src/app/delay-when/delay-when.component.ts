@@ -36,7 +36,7 @@ export class DelayWhenComponent implements OnInit {
         obs.subscribe(x => x, console.error, () => {
           setTimeout(() => {
             this.removeObs(obs);
-          }, 5000);
+          }, 3000);
         });
         return obs;
       })

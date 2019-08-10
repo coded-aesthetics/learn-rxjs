@@ -1,7 +1,26 @@
 <div>
-  <h1>Clicking will open subscription to three different kinds of observables.</h1>
-  <h2>First a cold observable which will start emitting values only after it gets an active subscriber.</h2>
-  <h2>Secondly a lukewarm observable, which will run as long as it has active subscribers and in this case new subscribers will tap into the running stream. But if there aren't any more subscribers, it will start from the beginning. (Tip: Click a second time with running subscription)</h2>
-  <h2>Thirdly a hot observable. It will always have an active subscriber and new subscribers will always tap into the running stream.</h2>
-  <app-marble-diagram *ngFor="let observable of observables" [observable]="observable"></app-marble-diagram>
+  <app-page-header [topic]="'hot vs cold'"></app-page-header>
+  <div class="page-content">
+    <h1>
+      Clicking will open subscription to three different kinds of observables.
+    </h1>
+    <h2>
+      First a cold observable which will start emitting values only after it
+      gets an active subscriber.
+    </h2>
+    <h2>
+      Secondly a lukewarm observable, which will run as long as it has active
+      subscribers and in this case new subscribers will tap into the running
+      stream. But if there aren't any more subscribers, it will start from the
+      beginning. <span class="secondary-color">Hint: Click a second time with running subscription</span>
+    </h2>
+    <h2>
+      Thirdly a hot observable. It will always have an active subscriber and new
+      subscribers will always tap into the running stream.
+    </h2>
+    <app-marble-diagram
+      *ngFor="let observable of observables"
+      [observable]="observable"
+    ></app-marble-diagram>
+  </div>
 </div>

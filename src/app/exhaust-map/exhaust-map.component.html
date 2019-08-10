@@ -1,4 +1,14 @@
 <div>
-  <h1>switch to a different timer observable on click, but only if current observable has completed</h1>
-  <app-marble-diagram #marble></app-marble-diagram>
+  <app-page-header [topic]="'exhaustMap'"></app-page-header>
+  <div class="page-content">
+    <h1>
+      Projects each source value to an Observable which is merged in the output
+      Observable only if the previous projected Observable has completed.
+    </h1>
+    <h2>
+      switch to a different timer observable on click, but only if current
+      observable has completed
+    </h2>
+    <app-marble-diagram #marble></app-marble-diagram>
+  </div>
 </div>

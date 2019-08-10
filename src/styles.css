@@ -21,7 +21,9 @@ body {
   color: #03192B;
 }
 
-
+.secondary-color {
+  color: #06b0d1;
+}
 
 .page-content {
   padding: 20px;

@@ -1,10 +1,26 @@
 <div>
-  <h1>Upon click, a new timer stream will be mergeMapped into the observable.</h1>
-  <h2>Source stream:</h2>
-  <app-marble-diagram #marble></app-marble-diagram>
-  <h2>Replayed observable on click (real-time)</h2>
-  <app-marble-diagram [observable]="observable"></app-marble-diagram>
-  <h2>Replayed observable on click (with slowed-down initial sequence): </h2>
-  <h3>Note that real emitted values may overlap the slowed-down sequence. This is just to show, that all values are replayed in the beginning. Above, that sequence seems to be one single emit, when in reality there are several values emitted in close succession.</h3>
-  <app-marble-diagram [observable]="observable2"></app-marble-diagram>
+  <app-page-header [topic]="'ReplaySubject'"></app-page-header>
+  <div class="page-content">
+    <h1>
+      A variant of Subject that "replays" or emits old values to new
+      subscribers. It buffers a set number of values and will emit those values
+      immediately to any new subscribers in addition to emitting new values to
+      existing subscribers.
+    </h1>
+    <h2>
+      On click, a new subscription to the ReplaySubject will be started.
+    </h2>
+    <h3>Source stream</h3>
+    <app-marble-diagram #marble></app-marble-diagram>
+    <h3>Replayed observable (real-time)</h3>
+    <app-marble-diagram [observable]="observable"></app-marble-diagram>
+    <h3>Replayed observable (with slowed-down initial sequence):</h3>
+    <h3 class="secondary-color">
+      Note that real emitted values may overlap the slowed-down sequence. This
+      is just to show, that all values are replayed in the beginning. Above,
+      that sequence seems to be one single emit, when in reality there are
+      several values emitted in close succession.
+    </h3>
+    <app-marble-diagram [observable]="observable2"></app-marble-diagram>
+  </div>
 </div>

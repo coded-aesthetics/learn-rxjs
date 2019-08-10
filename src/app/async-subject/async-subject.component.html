@@ -1,7 +1,22 @@
 <div>
-  <h1>Click once to start the subjects being fed. Click the second time to stop.</h1>
-  <h2>These are all the values passing through the AsyncSubject</h2>
-  <app-marble-diagram #marble [observable]="observableSource"></app-marble-diagram>
-  <h2>AsyncSubject will emit its latest value on complete. Will never emit if no value has been passing through.</h2>
-  <app-marble-diagram #marble2 [observable]="observable"></app-marble-diagram>
+  <app-page-header [topic]="'AsyncSubject'"></app-page-header>
+  <div class="page-content">
+    <h1>
+      A variant of Subject that only emits a value when it completes. It will
+      emit its latest value to all its observers on completion.
+    </h1>
+    <h2>
+      Click once to start the subjects being fed. Click the second time to stop.
+    </h2>
+    <h3>These are all the values passing through the AsyncSubject</h3>
+    <app-marble-diagram
+      #marble
+      [observable]="observableSource"
+    ></app-marble-diagram>
+    <h3 class="secondary-color">
+      AsyncSubject will emit its latest value on complete. Will never emit if no
+      value has been passing through.
+    </h3>
+    <app-marble-diagram #marble2 [observable]="observable"></app-marble-diagram>
+  </div>
 </div>

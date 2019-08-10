@@ -1,8 +1,4 @@
 #combine-all {
-  display:flex;
-  flex-wrap: wrap;
-  width: 1000px;
-  justify-content: space-evenly;
 }
 #combine-all div{
   margin-right: 30px;
@@ -10,10 +6,6 @@
 }
 
 #combine-all-outer {
-  display:flex;
-  flex-wrap: wrap;
-  justify-content: center;
-
 }
 
 #combine-all .caption{
