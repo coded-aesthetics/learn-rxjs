@@ -1,0 +1,37 @@
+#footer {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  font-family: 'PT Sans', sans-serif;
+}
+
+#footer-left {
+  width: 0;
+  height: 0;
+  border-bottom: 100px solid #03192B;
+  border-left: 100px solid transparent;
+}
+
+#footer-right {
+  background-color: #03192B;
+  height: 100px;
+  width:300px;
+  color: white;
+  text-align: center;
+}
+
+#footer-right-top {
+  font-size:32px;
+  margin-top: -7px;
+}
+
+#footer-right-top span {
+  font-size:50px;
+}
+
+#footer-right-bottom {
+  font-size:32px;
+  margin-top: -10px;
+  font-weight: bold;
+}

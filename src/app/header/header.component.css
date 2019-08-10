@@ -1,23 +1,19 @@
 #header-component {
-  height:30px;
+  height:36px;
   min-width: calc(100vw - 25px);
   background-color: #03192B;
   color:white;
 }
 
-#header-component-wrapper {
-  border: 1px solid lightgrey;
-  padding: 3px;
-}
-
 #header-left {
-  width: calc(100% - 305px);
+  width: calc(100% - 10px);
   float:left;
   text-align:left;
   font-family: 'PT Sans', sans-serif;
-  font-weight: bold;
+  font-size:20px;
   padding:5px;
   white-space: nowrap;
+  text-align: center;
   text-overflow: ellipsis;
   overflow:hidden;
 }

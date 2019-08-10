@@ -35,6 +35,7 @@ import { BehaviorSubjectComponent } from './behavior-subject/behavior-subject.co
 import { RaceComponent } from './race/race.component';
 import { HeaderComponent } from './header/header.component';
 import { PageHeaderComponent } from './page-header/page-header.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import { PageHeaderComponent } from './page-header/page-header.component';
     AsyncSubjectComponent,
     BehaviorSubjectComponent,
     RaceComponent,
-    PageHeaderComponent
+    PageHeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

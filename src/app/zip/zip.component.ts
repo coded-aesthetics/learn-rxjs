@@ -5,6 +5,7 @@ import { interval } from 'rxjs/observable/interval';
 import { zip } from 'rxjs/observable/zip';
 import { Observable } from 'rxjs/Observable';
 import { MarbleDiagramComponent } from '../marble-diagram/marble-diagram.component';
+import { range } from 'rxjs';
 
 @Component({
   selector: 'app-zip',
@@ -18,6 +19,9 @@ export class ZipComponent implements OnInit {
   marble2: MarbleDiagramComponent;
   @ViewChild('marble3', { static: true })
   marble3: MarbleDiagramComponent;
+  @ViewChild('marble4', { static: true })
+  marble4: MarbleDiagramComponent;
+
   public observable: Observable<any>;
 
   constructor() {}
@@ -29,8 +33,10 @@ export class ZipComponent implements OnInit {
     );
     this.marble2.setObservable(obs3, true);
     const obs4 = pipe(map(x => (x as number).toString(36)))(interval(1100));
+    const obs5 = range(10).pipe(map(x => (x + 10).toString(36)));
     this.marble.setObservable(obs4);
-    this.observable = zip(obs3, obs4);
+    this.marble4.setObservable(obs5);
+    this.observable = zip(obs3, obs4, obs5);
     this.marble3.setObservable(this.observable);
   }
 

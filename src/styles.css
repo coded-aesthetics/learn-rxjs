@@ -25,6 +25,10 @@ body {
   color: #06b0d1;
 }
 
+.primary-color {
+  color: #a11078;
+}
+
 .page-content {
   padding: 20px;
   max-width: 700px;
