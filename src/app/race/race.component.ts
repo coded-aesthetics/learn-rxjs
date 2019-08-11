@@ -6,6 +6,8 @@ import { zip } from 'rxjs/observable/zip';
 import { Observable } from 'rxjs/Observable';
 import { MarbleDiagramComponent } from '../marble-diagram/marble-diagram.component';
 import { race } from 'rxjs';
+import { addColor } from '../common/util/addColor';
+import { highlightColor, secondaryColor } from '../common/colors';
 
 @Component({
   selector: 'app-race',
@@ -26,8 +28,8 @@ export class RaceComponent implements OnInit {
 
   ngOnInit() {
     const obs1 = interval(Math.random() * 5000);
-    const obs2 = interval(Math.random() * 5000);
-    const obs3 = interval(Math.random() * 5000);
+    const obs2 = addColor(highlightColor)(interval(Math.random() * 5000));
+    const obs3 = addColor(secondaryColor)(interval(Math.random() * 5000));
     const obs4 = race(obs1, obs2, obs3);
 
     this.marble.setObservable(obs1);
