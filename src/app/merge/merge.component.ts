@@ -1,19 +1,18 @@
-import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MarbleDiagramComponent } from '../marble-diagram/marble-diagram.component';
 import { Observable } from 'rxjs/Observable';
 import { pipe } from 'rxjs/util/pipe';
 import { map, tap } from 'rxjs/operators';
 import { interval } from 'rxjs/observable/interval';
-import { zip } from 'rxjs/observable/zip';
 import { merge } from 'rxjs/observable/merge';
-import { Subscription } from 'rxjs';
+import { highlightColor } from '../common/colors';
 
 @Component({
   selector: 'app-merge',
   templateUrl: './merge.component.html',
   styleUrls: ['./merge.component.css']
 })
-export class MergeComponent implements OnInit, OnDestroy {
+export class MergeComponent implements OnInit {
 
   @ViewChild('marble', { static: true })
   marble: MarbleDiagramComponent;
@@ -22,25 +21,16 @@ export class MergeComponent implements OnInit, OnDestroy {
   @ViewChild('marble3', { static: true })
   marble3: MarbleDiagramComponent;
   public observable: Observable<any>;
-  public subscription: Subscription;
-
   constructor() {}
 
   ngOnInit() {
-    const startTime = Date.now();
     const obs3 = pipe(map(x => (x as number).toString(36)))(
       interval(678)
     );
-    obs3.subscribe(x => this.marble2.addMarble(x));
-    const obs4 = pipe(map(x => (x as number).toString(36)))(interval(1100));
-    obs4.subscribe(x => this.marble.addMarble(x));
-    this.observable = pipe(tap(x => this.marble3.addMarble(x)))(merge(obs3, obs4));
-    this.subscription = this.observable.subscribe(x => x);
-  }
-
-  ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
+    this.marble2.setObservable(obs3);
+    const obs4 = pipe(map(x => ({msg: (x as number).toString(36), color: highlightColor})))(interval(1100));
+    this.marble.setObservable(obs4);
+    const obs = merge(obs3, obs4);
+    this.marble3.setObservable(obs);
   }
 }

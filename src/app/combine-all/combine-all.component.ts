@@ -25,16 +25,12 @@ export class CombineAllComponent implements OnInit {
   marble2: MarbleDiagramComponent;
   @ViewChild('marble3', { static: true })
   marble3: MarbleDiagramComponent;
-  @ViewChild('marble4', { static: true })
-  marble4: MarbleDiagramComponent;
   @ViewChild('marble5', { static: true })
   marble5: MarbleDiagramComponent;
   @ViewChild('marble6', { static: true })
   marble6: MarbleDiagramComponent;
   @ViewChild('marble7', { static: true })
   marble7: MarbleDiagramComponent;
-  @ViewChild('marble8', { static: true })
-  marble8: MarbleDiagramComponent;
   @ViewChild('marble9', { static: true })
   marble9: MarbleDiagramComponent;
 
@@ -46,25 +42,22 @@ export class CombineAllComponent implements OnInit {
     const obs1 = timer(2000 * Math.random(), 2000 * Math.random()).pipe(take(5));
     const obs2 = timer(2000 * Math.random(), 2000 * Math.random()).pipe(take(5));
     const obs3 = timer(2000 * Math.random(), 2000 * Math.random()).pipe(take(5));
-    const obs4 = timer(2000 * Math.random(), 2000 * Math.random()).pipe(take(5));
-    const obses = of(obs1, obs2, obs3, obs4);
+    const obses = of(obs1, obs2, obs3);
     const startReplay = (ob) => {
-      this.marble4.setObservable(ob, true);
+      this.marble3.setObservable(ob, true);
       this.marble5.setObservable(obs1);
       this.marble6.setObservable(obs2);
       this.marble7.setObservable(obs3);
-      this.marble8.setObservable(obs4);
     };
     const higherOrder = pipe(
-      tap(console.log),
       tap(([cc, ev, ob]) => {
         cc === 1 ? this.marble.setObservable(ob, true) : cc === 2 ? this.marble2.setObservable(ob, true) :
-        cc === 3 ? this.marble3.setObservable(ob, true) : cc === 4 ? startReplay(ob) : '';
+        cc === 3 ? startReplay(ob) : '';
       }),
       map(([cc, ev, ob]) =>
         ob
       ),
-      take(4)
+      take(3)
     )(zip(clickCount, clicks, obses));
     const result = higherOrder.pipe(
       combineAll()
@@ -74,7 +67,6 @@ export class CombineAllComponent implements OnInit {
       this.marble5.stop();
       this.marble6.stop();
       this.marble7.stop();
-      this.marble8.stop();
     });
   }
 

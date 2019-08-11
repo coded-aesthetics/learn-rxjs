@@ -17,7 +17,7 @@ export class MarbleDiagramComponent implements OnInit, OnDestroy, OnChanges {
 
   ctx: CanvasRenderingContext2D;
 
-  marbles: {xPos: number, text: string}[] = [];
+  marbles: {xPos: number, text: string, color?: string}[] = [];
 
   moveservable: Observable<number>;
 
@@ -35,7 +35,6 @@ export class MarbleDiagramComponent implements OnInit, OnDestroy, OnChanges {
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
     if (changes.observable.currentValue) {
       this.setObservable(changes.observable.currentValue);
     }
@@ -66,8 +65,13 @@ export class MarbleDiagramComponent implements OnInit, OnDestroy, OnChanges {
     this.sub = obs.subscribe(x => this.addMarble(x), console.error, stopOnComplete ? () => {this.complete(); this.stop(); } : this.complete.bind(this));
   }
 
-  addMarble(msg: any) {
-    this.marbles.push({text: msg, xPos: 600 - this.marbleRadius});
+  addMarble(msg: any  | { msg: any, color: string }) {
+    if (msg.constructor.name === 'Object' && (msg.msg !== undefined || msg.msg === null)) {
+      const color = msg.color;
+      this.marbles.push({text: msg.msg, xPos: 600 - this.marbleRadius, color});
+    } else {
+      this.marbles.push({text: msg, xPos: 600 - this.marbleRadius});
+    }
   }
 
   stop() {
@@ -83,14 +87,56 @@ export class MarbleDiagramComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   redraw(offsetXDelta: number) {
+    this.updatePositions(offsetXDelta);
+    this.clearDiagram();
+    this.drawMarbleLine();
+    if (this.completedXPos !== undefined) {
+      this.drawCompleted();
+    }
+    if (this.startedXPos !== undefined) {
+      this.drawStart();
+    }
+
+    this.ctx.lineWidth = 2;
+    this.marbles.forEach(x => {
+      this.drawMarble(x);
+    });
+  }
+
+  private updatePositions(offsetXDelta: number) {
     this.marbles = this.isStopped ?
-      this.marbles : this.marbles.filter(x => x.xPos > -this.marbleRadius).map(x => ({text: x.text, xPos: x.xPos - offsetXDelta / 8}));
+      this.marbles : this.marbles.filter(x => x.xPos > -this.marbleRadius).map(x => ({...x, xPos: x.xPos - offsetXDelta / 8}));
     this.completedXPos = this.isStopped ?
       this.completedXPos : this.completedXPos - offsetXDelta / 8;
     this.startedXPos = this.isStopped ?
       this.startedXPos : this.startedXPos - offsetXDelta / 8;
-    this.ctx.clearRect(0, 0, this.ctx.canvas.width + 20, this.ctx.canvas.height + 20);
+  }
 
+  private clearDiagram() {
+    this.ctx.clearRect(0, 0, this.ctx.canvas.width + 20, this.ctx.canvas.height + 20);
+  }
+
+  private drawMarble(x) {
+    const color = x.color || '#03192B';
+    this.ctx.fillStyle = 'white';
+    this.ctx.strokeStyle = color;
+
+    this.ctx.font = '18px Lora';
+    const dim = this.ctx.measureText(x.text);
+    this.ctx.beginPath(); // Start a new path
+    this.ctx.arc(x.xPos, 35, this.marbleRadius, 0, 2 * Math.PI);
+    this.ctx.fill();
+    this.ctx.stroke();
+    if (dim.width > this.marbleRadius) {
+      this.ctx.fillStyle = 'white';
+      this.ctx.strokeStyle = color;
+      this.ctx.clearRect(x.xPos - dim.width / 2, 35 - 10, dim.width, 20);
+    }
+    this.ctx.fillStyle = color;
+    this.ctx.fillText(x.text, x.xPos - dim.width / 2, 35 + 6);
+  }
+
+  private drawMarbleLine() {
     this.ctx.lineWidth = 3;
     this.ctx.fillStyle = '#03192B';
     this.ctx.strokeStyle = '#03192B';
@@ -98,47 +144,30 @@ export class MarbleDiagramComponent implements OnInit, OnDestroy, OnChanges {
     this.ctx.moveTo(0, 35);
     this.ctx.lineTo(600, 35);
     this.ctx.stroke();
-    if (this.completedXPos !== undefined) {
-      this.ctx.strokeStyle = 'red';
-      this.ctx.lineWidth = 4;
-      this.ctx.beginPath();       // Start a new path
-      this.ctx.moveTo(this.completedXPos, 0);
-      this.ctx.lineTo(this.completedXPos, 70);
-      this.ctx.stroke();
-    }
-    if (this.startedXPos !== undefined) {
-      this.ctx.fillStyle = 'lightgreen';
-      this.ctx.strokeStyle = 'lightgreen';
-      this.ctx.lineWidth = 4;
-      this.ctx.beginPath();       // Start a new path
-      this.ctx.arc(this.startedXPos, 35, 12, 0, 2 * Math.PI);
-      this.ctx.stroke();
-      this.ctx.fill();
-      this.ctx.stroke();
-      this.ctx.beginPath();       // Start a new path
-      this.ctx.moveTo(this.startedXPos, 0);
-      this.ctx.lineTo(this.startedXPos, 70);
-      this.ctx.stroke();
-    }
+  }
 
-    this.ctx.lineWidth = 2;
-    this.marbles.forEach(x => {
-      this.ctx.fillStyle = 'white';
-      this.ctx.strokeStyle = '#03192B';
+  private drawStart() {
+    this.ctx.fillStyle = 'lightgreen';
+    this.ctx.strokeStyle = 'lightgreen';
+    this.ctx.lineWidth = 4;
+    this.ctx.beginPath();       // Start a new path
+    this.ctx.arc(this.startedXPos, 35, 12, 0, 2 * Math.PI);
+    this.ctx.stroke();
+    this.ctx.fill();
+    this.ctx.stroke();
+    this.ctx.beginPath();       // Start a new path
+    this.ctx.moveTo(this.startedXPos, 0);
+    this.ctx.lineTo(this.startedXPos, 70);
+    this.ctx.stroke();
+  }
 
-      this.ctx.font = '18px Lora';
-      const dim = this.ctx.measureText(x.text);
-      this.ctx.beginPath(); // Start a new path
-      this.ctx.arc(x.xPos, 35, this.marbleRadius, 0, 2 * Math.PI);
-      this.ctx.fill();
-      this.ctx.stroke();
-      if (dim.width > this.marbleRadius) {
-        this.ctx.fillStyle = 'white';
-        this.ctx.strokeStyle = '#03192B';
-        this.ctx.clearRect(x.xPos - dim.width / 2, 35 - 10, dim.width, 20);
-      }
-      this.ctx.fillStyle = '#03192B';
-      this.ctx.fillText(x.text, x.xPos - dim.width / 2, 35 + 6);
-    });
+  private drawCompleted() {
+    this.ctx.strokeStyle = 'red';
+    this.ctx.lineWidth = 4;
+    this.ctx.beginPath();       // Start a new path
+    this.ctx.moveTo(this.completedXPos, 0);
+    this.ctx.lineTo(this.completedXPos, 70);
+    this.ctx.stroke();
   }
 }
+
