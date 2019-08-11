@@ -1,0 +1,12 @@
+<div>
+    <app-page-header [topic]="'ignoreElements'"></app-page-header>
+    <div class="page-content">
+      <h1>Ignores all items emitted by the source Observable and only passes calls of complete or error.</h1>
+      <h3>Source stream</h3>
+      <app-marble-diagram #marble2></app-marble-diagram>
+      <h3>Ignore elements on single with <span class="secondary-color">x => x === 5</span></h3>
+      <app-marble-diagram #marble></app-marble-diagram>
+      <h3>Ignore elements on single with <span class="secondary-color">x => x > 3 && x <= 5</span></h3>
+      <app-marble-diagram #marble4></app-marble-diagram>
+    </div>
+  </div>

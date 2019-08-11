@@ -1,0 +1,18 @@
+<div>
+  <app-page-header [topic]="'bufferCount'"></app-page-header>
+  <div class="page-content">
+    <h1>
+      Buffers the source Observable values until the size hits the maximum
+      bufferSize given.
+    </h1>
+    <h2>
+      Source emits on mouseclick. e.g. bufferCount(bufferSize, startBufferEvery) will first emit after bufferSize events. After this it will wait for startBufferEvery emits and then buffer the last bufferSize events.
+    </h2>
+    <h3>Source (click) stream</h3>
+    <app-marble-diagram #marble2></app-marble-diagram>
+    <h3>Buffered (click) stream with <span class="secondary-color">bufferCount(4, 3)</span></h3>
+    <app-marble-diagram #marble></app-marble-diagram>
+    <h3>Buffered (click) stream with <span class="secondary-color">bufferCount(2, 5)</span></h3>
+    <app-marble-diagram #marble3></app-marble-diagram>
+  </div>
+</div>

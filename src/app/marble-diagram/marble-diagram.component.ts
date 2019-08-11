@@ -27,6 +27,7 @@ export class MarbleDiagramComponent implements OnInit, OnDestroy, OnChanges {
 
   completedXPos: number | undefined = undefined;
   startedXPos: number | undefined = undefined;
+  errorXPos: number | undefined = undefined;
 
   sub: Subscription;
 
@@ -62,11 +63,15 @@ export class MarbleDiagramComponent implements OnInit, OnDestroy, OnChanges {
     if (this.sub) {
       this.sub.unsubscribe();
     }
-    this.sub = obs.subscribe(x => this.addMarble(x), console.error, stopOnComplete ? () => {this.complete(); this.stop(); } : this.complete.bind(this));
+    this.sub = obs.subscribe(
+      x => this.addMarble(x),
+      e => this.error(e),
+      stopOnComplete ? () => {this.complete(); this.stop(); } : this.complete.bind(this)
+    );
   }
 
   addMarble(msg: any  | { msg: any, color: string }) {
-    if (msg.constructor.name === 'Object' && (msg.msg !== undefined || msg.msg === null)) {
+    if (msg && msg.constructor.name === 'Object' && (msg.msg !== undefined || msg.msg === null)) {
       const color = msg.color;
       this.marbles.push({text: msg.msg, xPos: 600 - this.marbleRadius, color});
     } else {
@@ -86,6 +91,10 @@ export class MarbleDiagramComponent implements OnInit, OnDestroy, OnChanges {
     this.completedXPos = 600 - this.marbleRadius;
   }
 
+  error(e: Error) {
+    this.errorXPos = 600 - this.marbleRadius;
+  }
+
   redraw(offsetXDelta: number) {
     this.updatePositions(offsetXDelta);
     this.clearDiagram();
@@ -95,6 +104,9 @@ export class MarbleDiagramComponent implements OnInit, OnDestroy, OnChanges {
     }
     if (this.startedXPos !== undefined) {
       this.drawStart();
+    }
+    if (this.errorXPos !== undefined) {
+      this.drawError();
     }
 
     this.ctx.lineWidth = 2;
@@ -110,6 +122,8 @@ export class MarbleDiagramComponent implements OnInit, OnDestroy, OnChanges {
       this.completedXPos : this.completedXPos - offsetXDelta / 8;
     this.startedXPos = this.isStopped ?
       this.startedXPos : this.startedXPos - offsetXDelta / 8;
+    this.errorXPos = this.isStopped ?
+      this.errorXPos : this.errorXPos - offsetXDelta / 8;
   }
 
   private clearDiagram() {
@@ -167,6 +181,19 @@ export class MarbleDiagramComponent implements OnInit, OnDestroy, OnChanges {
     this.ctx.beginPath();       // Start a new path
     this.ctx.moveTo(this.completedXPos, 0);
     this.ctx.lineTo(this.completedXPos, 70);
+    this.ctx.stroke();
+  }
+
+  private drawError() {
+    this.ctx.strokeStyle = 'red';
+    this.ctx.lineWidth = 4;
+    this.ctx.beginPath();       // Start a new path
+    this.ctx.moveTo(this.errorXPos - 20, 15);
+    this.ctx.lineTo(this.errorXPos + 20, 55);
+    this.ctx.stroke();
+    this.ctx.beginPath();       // Start a new path
+    this.ctx.moveTo(this.errorXPos - 20, 55);
+    this.ctx.lineTo(this.errorXPos + 20, 15);
     this.ctx.stroke();
   }
 }

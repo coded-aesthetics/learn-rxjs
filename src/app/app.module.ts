@@ -37,6 +37,9 @@ import { HeaderComponent } from './header/header.component';
 import { PageHeaderComponent } from './page-header/page-header.component';
 import { FooterComponent } from './footer/footer.component';
 import { IntroductionComponent } from './introduction/introduction.component';
+import { BufferCountComponent } from './buffer-count/buffer-count.component';
+import { SingleComponent } from './single/single.component';
+import { IgnoreElementsComponent } from './ignore-elements/ignore-elements.component';
 
 
 @NgModule({
@@ -74,7 +77,10 @@ import { IntroductionComponent } from './introduction/introduction.component';
     RaceComponent,
     PageHeaderComponent,
     FooterComponent,
-    IntroductionComponent
+    IntroductionComponent,
+    BufferCountComponent,
+    SingleComponent,
+    IgnoreElementsComponent
   ],
   imports: [
     BrowserModule,

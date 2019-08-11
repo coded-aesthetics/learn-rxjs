@@ -29,6 +29,9 @@ import { AsyncSubjectComponent } from './async-subject/async-subject.component';
 import { BehaviorSubjectComponent } from './behavior-subject/behavior-subject.component';
 import { RaceComponent } from './race/race.component';
 import { IntroductionComponent } from './introduction/introduction.component';
+import { BufferCountComponent } from './buffer-count/buffer-count.component';
+import { SingleComponent } from './single/single.component';
+import { IgnoreElementsComponent } from './ignore-elements/ignore-elements.component';
 
 const routes: Routes = [
   { path: 'switchMap', component: SwitchMapComponent },
@@ -39,8 +42,11 @@ const routes: Routes = [
   { path: 'merge', component: MergeComponent },
   { path: 'race', component: RaceComponent },
   { path: 'bufferTime', component: BufferTimeComponent },
+  { path: 'bufferCount', component: BufferCountComponent },
   { path: 'map', component: MapComponent },
   { path: 'scan', component: ScanComponent },
+  { path: 'single', component: SingleComponent },
+  { path: 'ignoreElements', component: IgnoreElementsComponent },
   { path: 'reduce', component: ReduceComponent },
   { path: 'elementAt', component: ElementAtComponent },
   { path: 'combineLatest', component: CombineLastestComponent },
