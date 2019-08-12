@@ -32,6 +32,8 @@ import { IntroductionComponent } from './introduction/introduction.component';
 import { BufferCountComponent } from './buffer-count/buffer-count.component';
 import { SingleComponent } from './single/single.component';
 import { IgnoreElementsComponent } from './ignore-elements/ignore-elements.component';
+import { MaterializeComponent } from './materialize/materialize.component';
+import { RetryComponent } from './retry/retry.component';
 
 const routes: Routes = [
   { path: 'switchMap', component: SwitchMapComponent },
@@ -40,7 +42,9 @@ const routes: Routes = [
   { path: 'zip', component: ZipComponent },
   { path: '', component: IntroductionComponent },
   { path: 'merge', component: MergeComponent },
+  { path: 'retry', component: RetryComponent },
   { path: 'race', component: RaceComponent },
+  { path: 'materialize', component: MaterializeComponent },
   { path: 'bufferTime', component: BufferTimeComponent },
   { path: 'bufferCount', component: BufferCountComponent },
   { path: 'map', component: MapComponent },

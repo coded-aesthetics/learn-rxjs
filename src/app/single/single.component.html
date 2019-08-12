@@ -1,7 +1,7 @@
 <div>
   <app-page-header [topic]="'single'"></app-page-header>
   <div class="page-content">
-    <h1>Check if exactly one event satisfies a certain condition.</h1>
+    <h1>Check if exactly one event satisfies a certain condition. Emit result on completion of source stream.</h1>
     <h2>Returns an Observable that emits the single item emitted by the source Observable that matches a specified predicate, if that Observable emits one such item. If the source Observable emits more than one such item or no items, notify of an IllegalArgumentException or NoSuchElementException respectively. If the source Observable emits items but none match the specified predicate then undefined is emitted.</h2>
     <h3>Source stream</h3>
     <app-marble-diagram #marble2></app-marble-diagram>

@@ -59,6 +59,7 @@ export class MarbleDiagramComponent implements OnInit, OnDestroy, OnChanges {
   setObservable(obs: Observable<any>, stopOnComplete = false) {
     this.startedXPos = 600 - this.marbleRadius;
     this.completedXPos = undefined;
+    this.errorXPos = undefined;
     this.marbles = [];
     if (this.sub) {
       this.sub.unsubscribe();

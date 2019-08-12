@@ -1,0 +1,13 @@
+<div>
+  <app-page-header [topic]="'retry'"></app-page-header>
+  <div class="page-content">
+    <h1>Resubscribes to an observable in case of an error.</h1>
+    <h2>Returns an Observable that mirrors the source Observable with the exception of an error. If the source Observable calls error, this method will resubscribe to the source Observable for a maximum of count resubscriptions (given as a number parameter) rather than propagating the error call.</h2>
+    <h2 class="secondary-color">Observable generates four random integers from 0-9, then completes. Errors when a value is divisible by three. This observable will be retried five times. Click to restart.</h2>
+    <h3>Retry observable</h3>
+    <app-marble-diagram #marble3></app-marble-diagram>
+    <h3>Individual retries</h3>
+    <app-marble-diagram *ngFor="let observable of observables" [observable]="observable" #marble></app-marble-diagram>
+
+  </div>
+</div>

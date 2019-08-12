@@ -40,6 +40,8 @@ import { IntroductionComponent } from './introduction/introduction.component';
 import { BufferCountComponent } from './buffer-count/buffer-count.component';
 import { SingleComponent } from './single/single.component';
 import { IgnoreElementsComponent } from './ignore-elements/ignore-elements.component';
+import { MaterializeComponent } from './materialize/materialize.component';
+import { RetryComponent } from './retry/retry.component';
 
 
 @NgModule({
@@ -80,7 +82,9 @@ import { IgnoreElementsComponent } from './ignore-elements/ignore-elements.compo
     IntroductionComponent,
     BufferCountComponent,
     SingleComponent,
-    IgnoreElementsComponent
+    IgnoreElementsComponent,
+    MaterializeComponent,
+    RetryComponent
   ],
   imports: [
     BrowserModule,
