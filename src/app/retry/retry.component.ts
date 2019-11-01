@@ -36,7 +36,7 @@ export class RetryComponent implements OnInit {
 
   restart() {
     this.observables = [];
-    const obs4 = Observable.create((observer) => {
+    const obs4 = new Observable((observer) => {
       const subject = new Subject();
       this.observables.unshift(subject.asObservable());
       let count = 0;
